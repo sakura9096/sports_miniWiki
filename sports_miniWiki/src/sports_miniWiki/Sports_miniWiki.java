@@ -67,6 +67,7 @@ public class Sports_miniWiki {
 		btnAtpWta.setBounds(436, 167, 140, 50);
 		Main_window.add(btnAtpWta);
 		
+<<<<<<< Updated upstream
 		JLabel lblSportsMiniwiki = new JLabel("Sports miniWiki");
 		lblSportsMiniwiki.setForeground(Color.YELLOW);
 		lblSportsMiniwiki.setFont(new Font("Lucida Grande", Font.BOLD, 24));
@@ -76,6 +77,10 @@ public class Sports_miniWiki {
 		
 		JLabel lblNewLabel = new JLabel("background");
 		lblNewLabel.setIcon(new ImageIcon("/Users/yuezhang/Documents/sports_miniWiki/sports_miniWiki/SPORTS-background.jpg"));
+=======
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("/Users/MHu/Documents/CIT591/sports_miniWiki/sports_miniWiki/SPORTS-background.jpg"));
+>>>>>>> Stashed changes
 		lblNewLabel.setBounds(0, 0, 640, 360);
 		Main_window.add(lblNewLabel);
 		
