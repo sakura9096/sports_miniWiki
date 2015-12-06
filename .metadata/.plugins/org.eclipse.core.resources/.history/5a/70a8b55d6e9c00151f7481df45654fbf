@@ -52,31 +52,9 @@ public class Sports_miniWiki {
 		frame.getContentPane().add(Main_window, "name_75543461813159");
 		Main_window.setLayout(null);
 		
-		JButton btnFifa = new JButton("FIFA");
-		btnFifa.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-		btnFifa.setBounds(74, 167, 140, 50);
-		Main_window.add(btnFifa);
-		
-		JButton btnNba = new JButton("NBA");
-		btnNba.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-		btnNba.setBounds(254, 167, 140, 50);
-		Main_window.add(btnNba);
-		
-		JButton btnAtpWta = new JButton("ATP & WTA");
-		btnAtpWta.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-		btnAtpWta.setBounds(436, 167, 140, 50);
-		Main_window.add(btnAtpWta);
-		
-		JLabel lblSportsMiniwiki = new JLabel("Sports miniWiki");
-		lblSportsMiniwiki.setForeground(Color.YELLOW);
-		lblSportsMiniwiki.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-		lblSportsMiniwiki.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSportsMiniwiki.setBounds(197, 58, 243, 51);
-		Main_window.add(lblSportsMiniwiki);
-		
-		JLabel lblNewLabel = new JLabel("background");
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("/Users/yuezhang/Documents/sports_miniWiki/sports_miniWiki/SPORTS-background.jpg"));
-		lblNewLabel.setBounds(0, 0, 640, 360);
+		lblNewLabel.setBounds(171, 148, 61, 16);
 		Main_window.add(lblNewLabel);
 		
 		JPanel FIFA = new JPanel();
