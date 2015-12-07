@@ -77,31 +77,11 @@ public class Sports_miniWiki {
 		final JPanel NBA = new JPanel();
 		frame.getContentPane().add(NBA, "name_75555177344305");
 		NBA.setLayout(null);
-		
-		JButton btnHome_1 = new JButton("Home");
-		btnHome_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				NBA.setVisible(false);
-				Main_window.setVisible(true);
-			}
-		});
-		btnHome_1.setBounds(503, 28, 117, 29);
-		NBA.add(btnHome_1);
 		NBA.setVisible(false);
 		
 		final JPanel ATP_WTA = new JPanel();
 		frame.getContentPane().add(ATP_WTA, "name_75561060277162");
 		ATP_WTA.setLayout(null);
-		
-		JButton btnHome_2 = new JButton("Home");
-		btnHome_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ATP_WTA.setVisible(false);
-				Main_window.setVisible(true);
-			}
-		});
-		btnHome_2.setBounds(506, 31, 117, 29);
-		ATP_WTA.add(btnHome_2);
 		ATP_WTA.setVisible(false);
 		
 		JButton btnFifa = new JButton("FIFA");
