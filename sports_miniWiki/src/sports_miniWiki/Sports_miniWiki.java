@@ -1,6 +1,5 @@
 package sports_miniWiki;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,17 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import java.awt.CardLayout;
 
 public class Sports_miniWiki {
 
 	private JFrame frame;
-	private JPanel Main_window;
-	private JPanel FIFA;
-	private JPanel NBA;
-	private JPanel ATP_WTA;
-
 	/**
 	 * Launch the application.
 	 */
@@ -75,7 +68,7 @@ public class Sports_miniWiki {
 		FIFA.add(btnHome);
 		
 		JLabel lblFifabackground = new JLabel("FIFA_background");
-		lblFifabackground.setIcon(new ImageIcon("/Users/yuezhang/Documents/sports_miniWiki/sports_miniWiki/src/resources/FIFA_background.jpg"));
+		lblFifabackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/FIFA_background.jpg")));
 		lblFifabackground.setBounds(0, 0, 1280, 720);
 		FIFA.add(lblFifabackground);
 		FIFA.setVisible(false);
@@ -94,6 +87,139 @@ public class Sports_miniWiki {
 		});
 		btnHome_1.setBounds(25, 25, 120, 40);
 		NBA.add(btnHome_1);
+		
+		JPanel NBA_leaders = new JPanel();
+		frame.getContentPane().add(NBA_leaders, "name_111499636225905");
+		NBA_leaders.setLayout(null);
+		
+		JButton btnBack_3 = new JButton("Back");
+		btnBack_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(true);
+				Main_window.setVisible(false);
+				NBA_leaders.setVisible(false);
+			}
+		});
+		btnBack_3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		btnBack_3.setBounds(25, 25, 120, 40);
+		NBA_leaders.add(btnBack_3);
+		
+		JLabel lblNbaleadersbackground = new JLabel("NBA_leaders_background");
+		lblNbaleadersbackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_players_trophy.jpg")));
+		lblNbaleadersbackground.setBounds(0, 0, 1280, 720);
+		NBA_leaders.add(lblNbaleadersbackground);
+		
+		JPanel NBA_players = new JPanel();
+		frame.getContentPane().add(NBA_players, "name_111060986091776");
+		NBA_players.setLayout(null);
+		
+		JButton btnBack_1 = new JButton("Back");
+		btnBack_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(true);
+				Main_window.setVisible(false);
+				NBA_players.setVisible(false);
+			}
+		});
+		btnBack_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		btnBack_1.setBounds(25, 25, 120, 40);
+		NBA_players.add(btnBack_1);
+		
+		JLabel lblNbaplayersbackground = new JLabel("NBA_players_background");
+		lblNbaplayersbackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_Logo.jpg")));
+		lblNbaplayersbackground.setBounds(0, 0, 1280, 720);
+		NBA_players.add(lblNbaplayersbackground);
+		
+		JPanel NBA_schedule = new JPanel();
+		frame.getContentPane().add(NBA_schedule, "name_111337211737580");
+		NBA_schedule.setLayout(null);
+		
+		JButton btnBack_2 = new JButton("Back");
+		btnBack_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(true);
+				Main_window.setVisible(false);
+				NBA_schedule.setVisible(false);
+			}
+		});
+		btnBack_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		btnBack_2.setBounds(25, 25, 120, 40);
+		NBA_schedule.add(btnBack_2);
+		
+		JLabel lblNbaschedulebackground = new JLabel("NBA_schedule_background");
+		lblNbaschedulebackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_court.jpg")));
+		lblNbaschedulebackground.setBounds(0, 0, 1280, 720);
+		NBA_schedule.add(lblNbaschedulebackground);
+		
+		JPanel NBA_teams = new JPanel();
+		NBA_teams.setToolTipText("");
+		frame.getContentPane().add(NBA_teams, "name_110655200741455");
+		NBA_teams.setLayout(null);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(true);
+				Main_window.setVisible(false);
+				NBA_teams.setVisible(false);
+			}
+		});
+		btnBack.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		btnBack.setBounds(25, 25, 120, 40);
+		NBA_teams.add(btnBack);
+		
+		JLabel lblNbateambackground = new JLabel("NBATeamBackground");
+		lblNbateambackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_team_logos.jpg")));
+		lblNbateambackground.setBounds(0, 0, 1280, 720);
+		NBA_teams.add(lblNbateambackground);
+		
+		JButton btnTeamProfile = new JButton("Team Profile");
+		btnTeamProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(false);
+				Main_window.setVisible(false);
+				NBA_teams.setVisible(true);
+			}
+		});
+		btnTeamProfile.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		btnTeamProfile.setBounds(150, 180, 200, 80);
+		NBA.add(btnTeamProfile);
+		
+		JButton btnPlayerProfile = new JButton("Player Profile");
+		btnPlayerProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(false);
+				Main_window.setVisible(false);
+				NBA_players.setVisible(true);
+			}
+		});
+		btnPlayerProfile.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		btnPlayerProfile.setBounds(150, 290, 200, 80);
+		NBA.add(btnPlayerProfile);
+		
+		JButton btnSchedule = new JButton("Schedule");
+		btnSchedule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(false);
+				Main_window.setVisible(false);
+				NBA_schedule.setVisible(true);
+			}
+		});
+		btnSchedule.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		btnSchedule.setBounds(150, 400, 200, 80);
+		NBA.add(btnSchedule);
+		
+		JButton buttonLeaders = new JButton("Leaders");
+		buttonLeaders.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(false);
+				Main_window.setVisible(false);
+				NBA_leaders.setVisible(true);
+			}
+		});
+		buttonLeaders.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		buttonLeaders.setBounds(150, 510, 200, 80);
+		NBA.add(buttonLeaders);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_trophy.jpg")));
