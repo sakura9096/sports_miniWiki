@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
 
 public class Sports_miniWiki {
 
@@ -69,7 +70,7 @@ public class Sports_miniWiki {
 		
 		JLabel lblFifabackground = new JLabel("FIFA_background");
 		lblFifabackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/FIFA_background.jpg")));
-		lblFifabackground.setBounds(0, 0, 1280, 720);
+		lblFifabackground.setBounds(-29, 6, 1280, 720);
 		FIFA.add(lblFifabackground);
 		FIFA.setVisible(false);
 		
@@ -170,7 +171,7 @@ public class Sports_miniWiki {
 		
 		JLabel lblNbateambackground = new JLabel("NBATeamBackground");
 		lblNbateambackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_team_logos.jpg")));
-		lblNbateambackground.setBounds(0, 0, 1280, 720);
+		lblNbateambackground.setBounds(-53, -19, 1280, 720);
 		NBA_teams.add(lblNbateambackground);
 		
 		JButton btnTeamProfile = new JButton("Team Profile");
@@ -228,6 +229,7 @@ public class Sports_miniWiki {
 		NBA.setVisible(false);
 		
 		final JPanel ATP_WTA = new JPanel();
+		ATP_WTA.setBackground(Color.WHITE);
 		frame.getContentPane().add(ATP_WTA, "name_75561060277162");
 		ATP_WTA.setLayout(null);
 		
@@ -239,8 +241,19 @@ public class Sports_miniWiki {
 				Main_window.setVisible(true);
 			}
 		});
-		btnHome_2.setBounds(25, 25, 120, 40);
+		btnHome_2.setBounds(0, 0, 120, 40);
 		ATP_WTA.add(btnHome_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBackground(Color.WHITE);
+		lblNewLabel_2.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_world_tour_brand_mark-converted_1024.jpg")));
+		lblNewLabel_2.setBounds(40, 40, 562, 649);
+		ATP_WTA.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 =  new JLabel("New label");
+		lblNewLabel_3.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/Women’s-Tennis-Association-Logo.jpg")));
+		lblNewLabel_3.setBounds(614, 48, 660, 602);
+		ATP_WTA.add(lblNewLabel_3);
 		ATP_WTA.setVisible(false);
 		
 		JButton btnFifa = new JButton("FIFA");

@@ -19,14 +19,19 @@ public class Tennis_APICaller {
 	}
 	
 	private void start () throws Exception {
-		URL url = new URL("http://api.sportradar.us/tennis-t1/tournament/0abbaeaf-d0bc-4aed-b15a-c929070eb60f/competitors.xml?api_key=hn38fgde5cn377xexv4a9rg6");
+		URL url = new URL("http://api.sportradar.us/tennis-t1/competitor/5751bac3-3661-4ae6-8257-481e032fd33b/summary.xml?api_key=hn38fgde5cn377xexv4a9rg6");
 		URLConnection connection = url.openConnection();
 		
 		Document doc = parseXML(connection.getInputStream());
-		NodeList descNodes = doc.getElementsByTagName("competitor");
+		NodeList competitor = doc.getElementsByTagName("competitor");
+		NodeList tournament = doc.getElementsByTagName("tournament");
 		
-		for (int i = 0; i < descNodes.getLength(); i++) {
-			System.out.println(descNodes.item(i).getAttributes().getNamedItem("name"));
+		System.out.println(competitor.item(0).getAttributes().getNamedItem("name"));
+		System.out.println(competitor.item(0).getAttributes().getNamedItem("ranking"));
+		System.out.println(competitor.item(0).getAttributes().getNamedItem("ranking_points"));
+		
+		for (int i = 0; i < tournament.getLength(); i++) {
+			System.out.println(tournament.item(i).getAttributes().getNamedItem("name"));
 		}
 	}
 	
