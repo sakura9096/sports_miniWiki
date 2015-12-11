@@ -16,8 +16,13 @@ public class NBATeam {
 	}
 	
 	public String toString() {
-		String res = market + " " + name;
-		return res;
+		StringBuilder res = new StringBuilder(market + " " + name + "\n" + "\n");
+		for (NBAPlayer p: members) {
+			String player = p.toString();
+			res.append(player + "\n");
+		}
+		String resStr = res.toString();
+		return resStr;
 	}
 
 }
