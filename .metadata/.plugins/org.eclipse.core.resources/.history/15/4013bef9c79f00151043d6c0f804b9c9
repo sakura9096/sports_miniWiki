@@ -1,0 +1,18 @@
+package sports_miniWiki;
+
+import java.util.ArrayList;
+
+public class NBATeam {
+	
+	private String name; 
+	private String market;
+	private ArrayList<NBAPlayer> members;
+	
+	public NBATeam(String name, String market, ArrayList<NBAPlayer> players) {
+		
+		this.name = name; 
+		this.market = market;
+		members = new ArrayList<NBAPlayer>();
+	}
+
+}

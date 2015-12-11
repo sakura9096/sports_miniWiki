@@ -1,0 +1,8 @@
+package sports_miniWiki;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class MainWindowPanel extends JPanel {
+
+}

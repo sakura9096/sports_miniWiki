@@ -1,0 +1,7 @@
+package sports_miniWiki;
+
+import javax.swing.JPanel;
+
+public class MainWindowPanel extends JPanel {
+
+}

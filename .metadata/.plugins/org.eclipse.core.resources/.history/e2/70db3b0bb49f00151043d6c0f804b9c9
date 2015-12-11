@@ -1,0 +1,10 @@
+package sports_miniWiki;
+
+public class NBALeaders_Individual {
+	
+	private int rank;
+	private String name;
+	private String team;
+	private String market;
+
+}

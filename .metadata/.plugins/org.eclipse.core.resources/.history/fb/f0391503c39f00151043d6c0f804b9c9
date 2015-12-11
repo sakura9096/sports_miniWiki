@@ -1,0 +1,11 @@
+package sports_miniWiki;
+
+public class NBATeamProfile {
+	
+	private ArrayList<NBATeam> teams;
+	
+	public NBATeamProfile() {
+		
+	}
+
+}

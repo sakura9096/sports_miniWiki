@@ -1,0 +1,40 @@
+package sports_miniWiki;
+
+import java.awt.CardLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class MainFrame extends JFrame {
+	
+	private MainWindowPanel Main_window;
+	
+	public MainFrame(String title) {
+		super(title);
+		
+		// Set layout manager
+		setLayout(new CardLayout(0, 0));
+		
+		
+		// Create Swing component
+		final MainWindowPanel Main_window = new MainWindowPanel();
+		
+		final JPanel FIFA = new JPanel();
+		final JPanel NBA = new JPanel();
+		final JPanel ATP_WTA = new JPanel();
+		
+		
+		// Add Swing components to content pane
+		Container c = getContentPane();
+		c.add(Main_window);
+		
+		
+	}
+
+}

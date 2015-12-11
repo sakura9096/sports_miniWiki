@@ -1,0 +1,51 @@
+package sports_miniWiki;
+
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class MainWindowPanel extends JPanel {
+	
+	public MainWindowPanel() {
+		this.setLayout(null);
+		this.setVisible(true);
+		
+		JLabel lblNewLabel = new JLabel("background");
+		JButton btnFifa = new JButton("FIFA");
+		JButton btnNba = new JButton("NBA");
+		JButton btnAtpWta = new JButton("ATP & WTA");
+		
+		
+		add(lblNewLabel);
+		add(btnFifa);
+		add(btnNba);
+		add(btnAtpWta);
+		
+		// Add ActionListener
+		btnFifa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FIFA.setVisible(true);
+				this.setVisible(false);
+			}
+		});
+
+		btnNba.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(true);
+				Main_window.setVisible(false);
+			}
+		});
+
+		btnAtpWta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ATP_WTA.setVisible(true);
+				Main_window.setVisible(false);
+			}
+		});
+	}
+}
