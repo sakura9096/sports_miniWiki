@@ -4,10 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-import org.json.JSONException;
 
 import java.awt.CardLayout;
 
@@ -28,7 +23,7 @@ import java.awt.Color;
 public class Sports_miniWiki {
 
 	private JFrame frame;
-	private NBA_Schedule scheduleOfNBA;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -72,6 +67,10 @@ public class Sports_miniWiki {
 		 * Caller to APIs.
 		 */
 		NBALeagueLeaders nbaLeaders = new NBALeagueLeaders();
+		TimeUnit.SECONDS.sleep(1);
+		NBA_Schedule scheduleOfNBA = new NBA_Schedule();
+		TimeUnit.SECONDS.sleep(1);
+		NBATeamProfile nbaTeamProfiles = new NBATeamProfile();
 		
 		/*
 		 * This is the FIFA page.
@@ -127,7 +126,8 @@ public class Sports_miniWiki {
 		comboBoxLeaders.setBounds(700, 90, 200, 30);
 		NBA_leaders.add(comboBoxLeaders);
 		
-		for (String category: nbaLeaders.categories) {
+		String[] categories = {"points", "assists", "threePoints", "rebounds", "freeThrow", "blocks", "steals"};
+		for (String category: categories) {
 			comboBoxLeaders.addItem(category);
 		}
 		
@@ -150,73 +150,58 @@ public class Sports_miniWiki {
 			        switch (selected) {
 			        	case "points": 
 			        		text.setText(null);
-			        		for (NBALeaders_Individual lead: nbaLeaders.pointsLeaders) {					        	
+			        		for (NBALeaders_Individual lead: nbaLeaders.getPointsLeaders()) {					        	
 				        		text.append(" " + lead.toString() + "\n");
 								text.append("\n");
 				        	}	
 			        		break;
 			        	case "assists":
 			        		text.setText(null);
-			        		for (NBALeaders_Individual lead: nbaLeaders.assistsLeaders) {					        	
+			        		for (NBALeaders_Individual lead: nbaLeaders.getAssistsLeaders()) {					        	
 				        		text.append(" " + lead.toString() + "\n");
 								text.append("\n");
 				        	}	
 			        		break;
 			        	case "threePoints": 
 			        		text.setText(null);
-			        		for (NBALeaders_Individual lead: nbaLeaders.threePointsLeaders) {					        	
+			        		for (NBALeaders_Individual lead: nbaLeaders.getThreePointsLeaders()) {					        	
 				        		text.append(" " + lead.toString() + "\n");
 								text.append("\n");
 				        	}	
 			        		break;
 			        	case "rebounds":
 			        		text.setText(null);
-			        		for (NBALeaders_Individual lead: nbaLeaders.reboundsLeaders) {					        	
+			        		for (NBALeaders_Individual lead: nbaLeaders.getReboundsLeaders()) {					        	
 				        		text.append(" " + lead.toString() + "\n");
 								text.append("\n");
 				        	}	
 			        		break;
 			        	case "freeThrow":
 			        		text.setText(null);
-			        		for (NBALeaders_Individual lead: nbaLeaders.freeThrowLeaders) {					        	
+			        		for (NBALeaders_Individual lead: nbaLeaders.getFreeThrowLeaders()) {					        	
 				        		text.append(" " + lead.toString() + "\n");
 								text.append("\n");
 				        	}	
 			        		break;
 			        	case "blocks":
 			        		text.setText(null);
-			        		for (NBALeaders_Individual lead: nbaLeaders.blocksLeaders) {					        	
+			        		for (NBALeaders_Individual lead: nbaLeaders.getBlocksLeaders()) {					        	
 				        		text.append(" " + lead.toString() + "\n");
 								text.append("\n");
 				        	}	
 			        		break;
 			        	case "steals":
 			        		text.setText(null);
-			        		for (NBALeaders_Individual lead: nbaLeaders.stealsLeaders) {					        	
+			        		for (NBALeaders_Individual lead: nbaLeaders.getStealsLeaders()) {					        	
 				        		text.append(" " + lead.toString() + "\n");
 								text.append("\n");
 				        	}	
 			        		break;
-					}
-			        	
-				}
-			        
-			}
-			
-			
+					}			        	
+				}			        
+			}						
 		}); 
 
-//		comboBoxLeaders.addItemListener(new ItemListener() {
-//			public void itemStateChanged(ItemEvent event) {
-//				if (event.getStateChange() == ItemEvent.SELECTED) {
-//					
-//					for (NBALeaders_Individual lead: nbaLeaders.pointsLeaders) {			        	
-//						text.setText(" " + lead.toString() + "\n");
-//						text.append("\n");			        					
-//					}
-//				}
-//			}
-//		});
 		
 		JButton btnBack_3 = new JButton("Back");
 		btnBack_3.addActionListener(new ActionListener() {
@@ -242,30 +227,6 @@ public class Sports_miniWiki {
 		NBA_leaders.add(lblNbaleadersbackground);
 		
 		
-		// A sub-page in NBA which displays NBA player profile.
-		
-		JPanel NBA_players = new JPanel();
-		frame.getContentPane().add(NBA_players, "name_111060986091776");
-		NBA_players.setLayout(null);
-		
-		JButton btnBack_1 = new JButton("Back");
-		btnBack_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				NBA.setVisible(true);
-				Main_window.setVisible(false);
-				NBA_players.setVisible(false);
-			}
-		});
-		btnBack_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		btnBack_1.setBounds(25, 25, 120, 40);
-		NBA_players.add(btnBack_1);
-		
-		JLabel lblNbaplayersbackground = new JLabel("NBA_players_background");
-		lblNbaplayersbackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_Logo.jpg")));
-		lblNbaplayersbackground.setBounds(0, 0, 1280, 720);
-		NBA_players.add(lblNbaplayersbackground);
-		
-		
 		// A sub-page in NBA which displays NBA schedule in 2015-2016 season.
 		
 		JPanel NBA_schedule = new JPanel();
@@ -273,68 +234,41 @@ public class Sports_miniWiki {
 		NBA_schedule.setLayout(null);
 		
 		
-		scheduleOfNBA = new NBA_Schedule();
-		
 		JComboBox<String> comboBoxDate = new JComboBox<String>();
 		comboBoxDate.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		comboBoxDate.setBounds(820, 90, 200, 30);
+		comboBoxDate.setBounds(850, 90, 200, 30);
 		NBA_schedule.add(comboBoxDate);
 		
-		for (int i = 0; i < scheduleOfNBA.dates.size(); i++) {
-			comboBoxDate.addItem(scheduleOfNBA.dates.get(i));
+		for (int i = 0; i < scheduleOfNBA.getStoredDate().size(); i++) {
+			comboBoxDate.addItem(scheduleOfNBA.getStoredDate().get(i));
 		}
 		
-		JTextArea textArea = new JTextArea(10, 45);
+		JTextArea textArea = new JTextArea(10, 38);
 		textArea.setVisible(true);
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Serif", Font.BOLD, 26));
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		
-		scrollPane.setBounds(140, 130, 1000, 500);
+		scrollPane.setBounds(215, 130, 850, 500);
 		NBA_schedule.add(scrollPane);
-		
-		for (NBASchedule_Individual game: scheduleOfNBA.schedule) {
-			textArea.append(" " + game.toString() + "\n");
-			textArea.append("\n");
-        				
-		}
-		
-		comboBoxDate.addActionListener(new ActionListener() {
+				
+		comboBoxDate.addActionListener(new ActionListener() {		
 			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == comboBoxDate) {
 					textArea.setText(null);
 					JComboBox<String> cb = (JComboBox<String>) e.getSource();
 			        String selectedDate = (String)cb.getSelectedItem();
-			        ArrayList<NBASchedule_Individual> temp = new ArrayList<NBASchedule_Individual>();
-			        for (NBASchedule_Individual game: scheduleOfNBA.schedule) {
-			        	if (game.getDate() == selectedDate) {
-			        		temp.add(game);      		
+			        			        
+			        for (NBASchedule_Individual game: scheduleOfNBA.getStoredSchedule()) {
+			        	if (game.getDate().equals(selectedDate)) {			        		
+			        		textArea.append(" " + game.toString() + "\n");
+							textArea.append("\n");
 			        	}				
-					}
-			        
-			        for (NBASchedule_Individual game: temp) {
-						textArea.append(" " + game.toString() + "\n");
-						textArea.append("\n");
-			        				
-					}
+					}		        
 				}
-			}
-			
+			}			
 		}); 
-//		comboBoxDate.addItemListener(new ItemListener() {
-//			public void itemStateChanged(ItemEvent event) {
-//				if (event.getStateChange() == ItemEvent.SELECTED) {
-//					
-//					for (NBASchedule_Individual game: scheduleOfNBA.schedule) {
-//			        	if (game.getDate() == comboBoxDate.getSelectedItem()) {
-//			        		textArea.setText(" " + game.toString() + "\n");
-//							textArea.append("\n");
-//			        	}				
-//					}
-//				}
-//			}
-//		});
 			
 		JButton btnBack_2 = new JButton("Back");
 		btnBack_2.addActionListener(new ActionListener() {
@@ -348,22 +282,100 @@ public class Sports_miniWiki {
 		btnBack_2.setBounds(25, 25, 120, 40);
 		NBA_schedule.add(btnBack_2);
 		
-		JLabel lblInstruction = new JLabel("View complete 2015-16 schedule below or select date from right:");
-		lblInstruction.setForeground(Color.BLUE);
-		lblInstruction.setFont(new Font("Lucida Grande", Font.BOLD, 18));
-		lblInstruction.setBounds(170, 90, 620, 30);
+		JLabel lblInstruction = new JLabel("View 2015-16 schedule by selecting the date:");
+		lblInstruction.setForeground(Color.CYAN);		
+		lblInstruction.setFont(new Font("Lucida Grande", Font.BOLD, 24));
+		lblInstruction.setBounds(250, 90, 600, 30);
 		NBA_schedule.add(lblInstruction);
 		
 		JLabel lblNbaschedulebackground = new JLabel("NBA_schedule_background");
-		lblNbaschedulebackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_court.jpg")));
+		lblNbaschedulebackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_schedulebg.jpg")));
 		lblNbaschedulebackground.setBounds(0, 0, 1280, 720);
 		NBA_schedule.add(lblNbaschedulebackground);
 		
 		
-		// A sub-page in NBA.
+		// A sub-page in NBA that displays NBA team and player information.
+		
 		JPanel NBA_teams = new JPanel();
 		frame.getContentPane().add(NBA_teams, "name_110655200741455");
 		NBA_teams.setLayout(null);
+		
+		JComboBox<String> comboBoxTeams = new JComboBox<String>();
+		comboBoxTeams.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		comboBoxTeams.setBounds(700, 90, 300, 30);
+		NBA_teams.add(comboBoxTeams);
+		
+		for (String t: nbaTeamProfiles.getTeam().keySet()) {
+			comboBoxTeams.addItem(t);
+		}
+		
+		JTextArea textForTeam = new JTextArea(10, 39);
+		textForTeam.setVisible(true);
+		textForTeam.setEditable(false);
+		textForTeam.setFont(new Font("Serif", Font.BOLD, 26));
+		JScrollPane sp2 = new JScrollPane(textForTeam);
+		
+		sp2.setBounds(240, 130, 800, 500);
+		NBA_teams.add(sp2);
+		
+		comboBoxTeams.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == comboBoxTeams) {
+					JComboBox<String> cb = (JComboBox<String>) e.getSource();
+			        String selected = (String)cb.getSelectedItem();
+			        
+			        switch (selected) {
+			        	case "Chicago Bulls": 
+			        		textForTeam.setText(null);			        			        	
+			        		textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(0).toString() + "\n");
+			        		textForTeam.append("\n");				        	
+			        		break;
+			        				        
+			        	case "Cleveland Cavaliers": 
+			        		textForTeam.setText(null);			        						        	
+			        		textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(1).toString() + "\n");
+			        		textForTeam.append("\n");				        		
+			        		break;
+			        		
+			        	case "Golden State Warriors":
+			        		textForTeam.setText(null);			        						        	
+				        	textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(2).toString() + "\n");
+							textForTeam.append("\n");				        	
+			        		break;
+			        		
+			        	case "Indiana Pacers":
+			        		textForTeam.setText(null);			        						        	
+				        	textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(3).toString() + "\n");
+							textForTeam.append("\n");				        	
+			        		break;
+			        	
+			        	case "Los Angeles Clippers":
+			        		textForTeam.setText(null);			        						        	
+				        	textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(4).toString() + "\n");
+							textForTeam.append("\n");				        	
+			        		break;
+			        		
+			        	case "Oklahoma City Thunder":
+			        		textForTeam.setText(null);			        						        	
+				        	textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(5).toString() + "\n");
+							textForTeam.append("\n");				        	
+			        		break;
+			        	
+			        	case "San Antonio Spurs": 
+			        		textForTeam.setText(null);			        			        	
+				        	textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(6).toString() + "\n");
+							textForTeam.append("\n");				        	
+			        		break;
+			        	case "Toronto Raptors":
+			        		textForTeam.setText(null);			        		     			        	
+				        	textForTeam.append(" " + nbaTeamProfiles.getStoredTeams().get(7).toString() + "\n");
+							textForTeam.append("\n");	
+			        		break;			        	
+					}			        	
+				}			        
+			}						
+		}); 
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -377,13 +389,22 @@ public class Sports_miniWiki {
 		btnBack.setBounds(25, 25, 120, 40);
 		NBA_teams.add(btnBack);
 		
+		JLabel label = new JLabel("Select team from the list:");
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Lucida Grande", Font.BOLD, 24));
+		label.setBounds(300, 90, 400, 30);
+		NBA_teams.add(label);
+		
 		JLabel lblNbateambackground = new JLabel("NBATeamBackground");
 		lblNbateambackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_team_logos.jpg")));
 		lblNbateambackground.setBounds(-53, -19, 1280, 720);
+
+		lblNbateambackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_teambackground.jpg")));
+		lblNbateambackground.setBounds(0, 0, 1280, 720);
 		NBA_teams.add(lblNbateambackground);
 		
 		
-		JButton btnTeamProfile = new JButton("Team Profile");
+		JButton btnTeamProfile = new JButton("Team Rosters");
 		btnTeamProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NBA.setVisible(false);
@@ -395,18 +416,6 @@ public class Sports_miniWiki {
 		btnTeamProfile.setBounds(150, 510, 200, 80);
 		NBA.add(btnTeamProfile);
 		
-		JButton btnPlayerProfile = new JButton("Player Profile");
-		btnPlayerProfile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				NBA.setVisible(false);
-				Main_window.setVisible(false);
-				NBA_players.setVisible(true);
-			}
-		});
-		btnPlayerProfile.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-		btnPlayerProfile.setBounds(150, 400, 200, 80);
-		NBA.add(btnPlayerProfile);
-		
 		JButton btnSchedule = new JButton("Schedule");
 		btnSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -416,7 +425,7 @@ public class Sports_miniWiki {
 			}
 		});
 		btnSchedule.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-		btnSchedule.setBounds(150, 290, 200, 80);
+		btnSchedule.setBounds(150, 345, 200, 80);
 		NBA.add(btnSchedule);
 		
 		JButton buttonLeaders = new JButton("Leaders");

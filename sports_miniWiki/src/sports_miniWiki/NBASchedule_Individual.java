@@ -1,5 +1,10 @@
 package sports_miniWiki;
 
+/**
+ * This class constructs information about a single scheduled NBA game.
+ * @author yuezhang
+ *
+ */
 public class NBASchedule_Individual {
 	
 	private String date;
@@ -7,6 +12,13 @@ public class NBASchedule_Individual {
 	private String away;
 	private String home;
 	
+	/**
+	 * The constructor
+	 * @param date
+	 * @param time
+	 * @param away
+	 * @param home
+	 */
 	public NBASchedule_Individual(String date, String time, String away, String home) {
 		this.date = date;
 		this.time = time;
@@ -14,18 +26,12 @@ public class NBASchedule_Individual {
 		this.home = home;
 	}
 
+	@Override
 	public String toString() {
 		String res = date + " " + time + " " + away + " VS " + home;
 		return res;
 	}
 	
-//	public boolean equals(Object object) {
-//		String thisDate = this.getDate();
-//		String otherDate = ((NBASchedule_Individual)object).getDate();
-//		
-//		return false;
-//		
-//	}
 
 	/**
 	 * @return the date
@@ -33,26 +39,4 @@ public class NBASchedule_Individual {
 	public String getDate() {
 		return date;
 	}
-
-	/**
-	 * @return the time
-	 */
-	public String getTime() {
-		return time;
-	}
-
-	/**
-	 * @return the away
-	 */
-	public String getAway() {
-		return away;
-	}
-
-	/**
-	 * @return the home
-	 */
-	public String getHome() {
-		return home;
-	}
-
 }

@@ -19,7 +19,8 @@ public class NBAPlayer {
 		
 	}
 	public String toString() {
-		String res = number + " -- " + player + ": " + position + "  height: " + height + "  weight: " + weight + "  experience: " + experience + "years";
+		String res = number + " -- " + player + ": " + position + "  height: " 
+					+ height + "  weight: " + weight + "  experience: " + experience + "years" + "\n";
 		return res;
 	}
 

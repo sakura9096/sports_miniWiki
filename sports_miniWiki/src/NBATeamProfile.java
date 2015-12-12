@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -54,8 +53,9 @@ public class NBATeamProfile {
 			        while ((results = in.readLine()) != null) {       	
 			        	js = new JSONObject(results);			        	
 			        	String name = js.getString("name");
-			        	String market = js.getString("market");
+			        	String market = js.getString("market");			 
 			        	t = new NBATeam(name, market);
+			        	System.out.println(t);
 			        	JSONArray players = js.getJSONArray("players");
 			        	for (int i = 0; i < players.length(); i++) {
 			        		String player = players.getJSONObject(i).getString("full_name");
@@ -88,6 +88,7 @@ public class NBATeamProfile {
 			        	String name = js.getString("name");
 			        	String market = js.getString("market");
 			        	t1 = new NBATeam(name, market);
+			        	System.out.println(t1);
 			        	JSONArray players = js.getJSONArray("players");
 			        	for (int i = 0; i < players.length(); i++) {
 			        		String player = players.getJSONObject(i).getString("full_name");
@@ -120,6 +121,7 @@ public class NBATeamProfile {
 			        	String name = js.getString("name");
 			        	String market = js.getString("market");
 			        	t2 = new NBATeam(name, market);
+			        	System.out.println(t2);
 			        	JSONArray players = js.getJSONArray("players");
 			        	for (int i = 0; i < players.length(); i++) {
 			        		String player = players.getJSONObject(i).getString("full_name");
@@ -152,6 +154,7 @@ public class NBATeamProfile {
 			        	String name = js.getString("name");
 			        	String market = js.getString("market");
 			        	t3 = new NBATeam(name, market);
+			        	System.out.println(t3);
 			        	JSONArray players = js.getJSONArray("players");
 			        	for (int i = 0; i < players.length(); i++) {
 			        		String player = players.getJSONObject(i).getString("full_name");

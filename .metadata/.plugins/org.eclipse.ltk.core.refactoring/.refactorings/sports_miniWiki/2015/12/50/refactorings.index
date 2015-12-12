@@ -13,6 +13,10 @@
 1449812441967	Rename local variable 'myConnection'
 1449812447551	Rename local variable 'in'
 1449850926192	Copy compilation unit
+<<<<<<< HEAD
 1449861248146	Delete element
 1449861370217	Delete element
 1449863356022	Delete element
+=======
+1449870252063	Delete element
+>>>>>>> upstream/master
