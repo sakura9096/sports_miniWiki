@@ -61,6 +61,11 @@ public class Sports_miniWiki {
 		Main_window.setLayout(null);
 		Main_window.setVisible(true);
 		
+		/*
+		 * Caller to APIs.
+		 */
+		
+		
 		
 		/*
 		 * This is the FIFA page.

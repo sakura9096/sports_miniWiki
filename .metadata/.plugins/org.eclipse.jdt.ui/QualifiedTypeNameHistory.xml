@@ -15,11 +15,11 @@
 <fullyQualifiedTypeName name="sports_miniWiki.NBALeagueLeaders"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="sports_miniWiki.NBATeam"/>
 <fullyQualifiedTypeName name="sports_miniWiki.NBAPlayer"/>
 <fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
 <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
 <fullyQualifiedTypeName name="sports_miniWiki.NBATeamProfile"/>
 <fullyQualifiedTypeName name="java.util.TreeMap"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="sports_miniWiki.NBATeam"/>
 </qualifiedTypeNameHistroy>
