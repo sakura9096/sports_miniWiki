@@ -1,0 +1,9 @@
+package sports_miniWiki;
+
+public class NBATeam {
+	
+	public NBATeam() {
+		
+	}
+
+}

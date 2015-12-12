@@ -1,0 +1,12 @@
+package sports_miniWiki;
+
+public class NBAPlayer {
+	
+	private String player;
+	private String position;
+	private String number;
+	private String height;
+	private String weight;
+	private String experience;
+
+}

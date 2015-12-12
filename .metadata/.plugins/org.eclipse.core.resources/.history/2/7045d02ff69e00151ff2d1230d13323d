@@ -1,0 +1,69 @@
+package sports_miniWiki;
+
+import java.awt.CardLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class MainFrame extends JFrame {
+	
+	public MainFrame(String title) {
+		super(title);
+		
+		// Set layout manager
+		setLayout(new CardLayout(0, 0));
+		
+		
+		// Create Swing component
+		final JPanel Main_window = new JPanel();
+		Main_window.setLayout(null);
+		Main_window.setVisible(true);
+		
+		JLabel lblNewLabel = new JLabel("background");
+		JButton btnFifa = new JButton("FIFA");
+		JButton btnNba = new JButton("NBA");
+		JButton btnAtpWta = new JButton("ATP & WTA");
+		
+		
+		final JPanel FIFA = new JPanel();
+		final JPanel NBA = new JPanel();
+		final JPanel ATP_WTA = new JPanel();
+		
+		// Add Swing components to content pane
+		Container c = getContentPane();
+		c.add(Main_window);
+		c.add(lblNewLabel);
+		c.add(btnFifa);
+		c.add(btnNba);
+		c.add(btnAtpWta);
+		
+		// Add ActionListener
+		btnFifa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FIFA.setVisible(true);
+				Main_window.setVisible(false);
+			}
+		});
+		
+		btnNba.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NBA.setVisible(true);
+				Main_window.setVisible(false);
+			}
+		});
+		
+		btnAtpWta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ATP_WTA.setVisible(true);
+				Main_window.setVisible(false);
+			}
+		});
+	}
+
+}

@@ -1,0 +1,22 @@
+package sports_miniWiki;
+
+import java.awt.CardLayout;
+
+import javax.swing.JFrame;
+
+public class MainFrame extends JFrame {
+	
+	public MainFrame(String title) {
+		super(title);
+		
+		// Set layout manager
+		setLayout(new CardLayout(0, 0));
+		
+		
+		// Create Swing component
+		
+		
+		// Add Swing components to content pane
+	}
+
+}

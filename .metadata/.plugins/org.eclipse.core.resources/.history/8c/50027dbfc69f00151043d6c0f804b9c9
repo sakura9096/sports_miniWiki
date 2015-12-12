@@ -1,0 +1,12 @@
+package sports_miniWiki;
+
+public class NBAPlayer {
+	
+	private String player;
+	private String position;
+	private String number;
+	private String height = players.getJSONObject(i).getString("height");
+	private String weight = players.getJSONObject(i).getString("weight");
+	private String experience = players.getJSONObject(i).getString("experience");
+
+}

@@ -1,0 +1,26 @@
+package sports_miniWiki;
+
+public class NBALeaders_Individual {
+	
+	private int rank;
+	private String name;
+	private String market;
+	private String team;
+	private double stats;
+	private String category;
+	
+	public NBALeaders_Individual(int rank, String name, String market, String team, double stats, String category) {
+		this.rank = rank;
+		this.name = name;
+		this.market = market;
+		this.team = team;
+		this.stats = stats;
+		this.category = category;
+	}
+	
+	public String toString() {
+		String res = rank + ": " + name + " " + stats + " " + category + " ( " + market + team + " ) ";
+		return res;
+	}
+
+}

@@ -1,3 +1,11 @@
 /resources/
+<<<<<<< HEAD
 /sports_miniWiki/
 /.DS_Store
+=======
+/NBA_Schedule.class
+/NBATeamProfile.class
+>>>>>>> upstream/master
+/Tennis.class
+/Tennis_Player.class
+/TennisLeagueSchedule.class

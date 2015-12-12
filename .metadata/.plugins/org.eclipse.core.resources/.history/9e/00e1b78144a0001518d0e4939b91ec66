@@ -1,0 +1,28 @@
+package sports_miniWiki;
+
+import java.util.ArrayList;
+
+public class GetTennisPlayerInfo {
+	
+	private ArrayList<TennisPlayer> ATP_top10 = new ArrayList<TennisPlayer> ();
+	private ArrayList<TennisPlayer> WTA_top10 = new ArrayList<TennisPlayer> ();
+	
+	private static final String[] ATP_ID = {"5751bac3-3661-4ae6-8257-481e032fd33b","f469a52f-df2a-40f2-9923-627232fa18e2","ecea93ca-ac1d-41a0-ac84-95d09077e343",
+											"28449696-4d2b-45eb-9779-c7f6eef38423","c8bde16f-5197-4273-9d6e-7f1d906c2b53","9eeb7f6f-8717-4ca6-afb0-a6b6ad1e2408",
+											"1c27f899-e32f-4430-874f-4bef0a5d4a7c","10633607-c6d1-40de-ac39-cc254baf9276","c7ca8d70-cb43-4ba1-8b32-2f61dca0fd67",
+											"b65d1cfe-b3c1-4a7d-b7b9-70cd21f3f140"};
+	
+	private static final String[] WTA_ID = {"e7560249-17eb-4400-aa23-6004551d60d8","371ccf74-01e4-4e69-86a6-ab43d800c9e7","166d303a-7144-49c5-bb56-4c93614aad04",
+											"74ab8026-7b1e-40fc-8b2a-55980f8b544f","e840b962-6333-4940-b83d-d385546eee6e","b150e3cd-539c-4994-846e-1a651fde6300",
+											"0b7132dd-1311-4cff-816c-e524e1f9f849","f816edde-f993-4a27-bd45-8f6b16bb9ef7","7d3457c5-0389-46a6-8f5d-bac82e9edf18",
+											"575f9ef0-06d0-4f10-951b-ad51abd835d4"};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
