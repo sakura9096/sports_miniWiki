@@ -71,14 +71,6 @@ public class Sports_miniWiki {
 		Main_window.setLayout(null);
 		Main_window.setVisible(true);
 		
-		/*
-		 * Caller to APIs.
-		 */
-		NBALeagueLeaders nbaLeaders = new NBALeagueLeaders();
-		TimeUnit.SECONDS.sleep(1);
-		NBA_Schedule scheduleOfNBA = new NBA_Schedule();
-		TimeUnit.SECONDS.sleep(1);
-		NBATeamProfile nbaTeamProfiles = new NBATeamProfile();
 		
 		/*
 		 * This is the FIFA page.
@@ -125,6 +117,8 @@ public class Sports_miniWiki {
 		NBA.add(btnHome_1);
 		
 		// A sub-page in NBA.
+		NBALeagueLeaders nbaLeaders = new NBALeagueLeaders();
+		
 		JPanel NBA_leaders = new JPanel();
 		frame.getContentPane().add(NBA_leaders, "name_111499636225905");
 		NBA_leaders.setLayout(null);
@@ -236,6 +230,8 @@ public class Sports_miniWiki {
 		
 		
 		// A sub-page in NBA which displays NBA schedule in 2015-2016 season.
+		TimeUnit.SECONDS.sleep(1);
+		NBA_Schedule scheduleOfNBA = new NBA_Schedule();
 		
 		JPanel NBA_schedule = new JPanel();
 		frame.getContentPane().add(NBA_schedule, "name_111337211737580");
@@ -303,6 +299,8 @@ public class Sports_miniWiki {
 		
 		
 		// A sub-page in NBA that displays NBA team and player information.
+		TimeUnit.SECONDS.sleep(1);
+		NBATeamProfile nbaTeamProfiles = new NBATeamProfile();
 		
 		JPanel NBA_teams = new JPanel();
 		frame.getContentPane().add(NBA_teams, "name_110655200741455");
