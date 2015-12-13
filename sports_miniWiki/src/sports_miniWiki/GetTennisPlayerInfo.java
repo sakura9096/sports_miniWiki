@@ -1,5 +1,8 @@
 package sports_miniWiki;
 
+/**
+ * This class call the API for the top10 ATP and top10 WTA player information
+ */
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -43,7 +46,9 @@ public class GetTennisPlayerInfo {
 	
 	public GetTennisPlayerInfo() throws Exception {
 		ATP_top10 = getTop10(ATP_ID);
-		WTA_top10 = getTop10(WTA_ID);	
+		TimeUnit.SECONDS.sleep(1);
+		WTA_top10 = getTop10(WTA_ID);
+		TimeUnit.SECONDS.sleep(1);	
 	}
 	
 
@@ -72,7 +77,7 @@ public class GetTennisPlayerInfo {
 		ArrayList<TennisPlayer> player = new ArrayList<TennisPlayer> ();
 		
 		for(String element: id) {
-			String link = "http://api.sportradar.us/tennis-t1/competitor/" + element + "/summary.xml?api_key=hn38fgde5cn377xexv4a9rg6";
+			String link = "http://api.sportradar.us/tennis-t1/competitor/" + element + "/summary.xml?api_key=hbnefvjkssda5f3xa4tctnfd";
 			String name = "unknown";
 			String ranking = "0";
 			String ranking_points = "0";
@@ -119,7 +124,12 @@ public class GetTennisPlayerInfo {
 		return player;
 	}
 		
-	
+	/**
+	 * parse XML file
+	 * @param stream
+	 * @return
+	 * @throws Exception
+	 */
 	private Document parseXML(InputStream stream) throws Exception {
 		DocumentBuilderFactory objDocumentBuilderFactory = null;
         DocumentBuilder objDocumentBuilder = null;

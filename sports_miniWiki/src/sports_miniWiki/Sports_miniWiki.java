@@ -1,9 +1,15 @@
 package sports_miniWiki;
 
+/**
+ * This is the main script for this project
+ */
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
@@ -19,6 +25,8 @@ import java.awt.CardLayout;
 import javax.swing.JComboBox;
 
 import java.awt.Color;
+//import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 
 public class Sports_miniWiki {
 
@@ -396,9 +404,6 @@ public class Sports_miniWiki {
 		NBA_teams.add(label);
 		
 		JLabel lblNbateambackground = new JLabel("NBATeamBackground");
-		lblNbateambackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_team_logos.jpg")));
-		lblNbateambackground.setBounds(-53, -19, 1280, 720);
-
 		lblNbateambackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_teambackground.jpg")));
 		lblNbateambackground.setBounds(0, 0, 1280, 720);
 		NBA_teams.add(lblNbateambackground);
@@ -446,49 +451,843 @@ public class Sports_miniWiki {
 		NBA.add(lblNewLabel_1);
 		NBA.setVisible(false);
 		
-		
-		/*
-		 * This is the tennis page.
+		/**
+		 * ATP_WTA panel, created by Man Hu
 		 */
+		// call Tennis API
+		GetTennisPlayerInfo tennisInfo = new GetTennisPlayerInfo();
+		TimeUnit.SECONDS.sleep(1);
+		GetTennisSchedule tennisSchedule = new GetTennisSchedule();
+		TimeUnit.SECONDS.sleep(1);
+		
+		// ATP_WTA panel
 		final JPanel ATP_WTA = new JPanel();
-		ATP_WTA.setBackground(Color.WHITE);
-		frame.getContentPane().add(ATP_WTA, "name_75561060277162");
+		frame.getContentPane().add(ATP_WTA, "ATP_WTA");
 		ATP_WTA.setLayout(null);
 		
-		JButton btnHome_2 = new JButton("Home");
-		btnHome_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		btnHome_2.addActionListener(new ActionListener() {
+		// "Home" Button
+		JButton TennisHomepage = new JButton("Home");
+		TennisHomepage.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		TennisHomepage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ATP_WTA.setVisible(false);
 				Main_window.setVisible(true);
 			}
 		});
-		btnHome_2.setBounds(25, 25, 120, 40);
-		ATP_WTA.add(btnHome_2);
+		TennisHomepage.setBounds(25, 25, 120, 40);
+		ATP_WTA.add(TennisHomepage);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBackground(Color.WHITE);
-		lblNewLabel_2.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_world_tour_brand_mark-converted_1024.jpg")));
-		lblNewLabel_2.setBounds(131, 78, 454, 490);
-		ATP_WTA.add(lblNewLabel_2);
+		// ATP_WTA background
+		JLabel Tennis_Symbol = new JLabel("");
+		Tennis_Symbol.setHorizontalAlignment(SwingConstants.CENTER);
+		Tennis_Symbol.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp-wta.jpg")));
+		Tennis_Symbol.setBounds(198, 78, 912, 490);
+		ATP_WTA.add(Tennis_Symbol);
+
+		/**
+		 * ATP_Player panel
+		 */
+		JPanel ATP_Player = new JPanel();
+		frame.getContentPane().add(ATP_Player, "ATP_Player");
+		ATP_Player.setLayout(null);
+			
+		JTextArea ATP_Player_Info  = new JTextArea(10, 20);
+		ATP_Player_Info.setVisible(true);
+		ATP_Player_Info.setEditable(false);
+		ATP_Player_Info.setFont(new Font("Serif", Font.PLAIN, 25));
+		JScrollPane ATPPlayerInfo_scroll = new JScrollPane(ATP_Player_Info);
 		
-		JLabel lblNewLabel_3 =  new JLabel("New label");
-		lblNewLabel_3.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/Women’s-Tennis-Association-Logo.jpg")));
-		lblNewLabel_3.setBounds(620, 60, 660, 602);
-		ATP_WTA.add(lblNewLabel_3);
+		ATPPlayerInfo_scroll.setBounds(600, 100, 640, 550);
+		ATP_Player.add(ATPPlayerInfo_scroll);
+
+		/* Djokvic */
+		JLabel Djokovic = new JLabel("");
+		Djokovic.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/djokovic.jpg")));
+		Djokovic.setBounds(64, 153, 80, 80);
+		ATP_Player.add(Djokovic);
 		
-		JButton goToATPpanel = new JButton("ATP");
-		goToATPpanel.addActionListener(new ActionListener() {
+		JButton btnDjo = new JButton("Djokovic");
+		btnDjo.setBounds(158, 180, 110, 30);
+		ATP_Player.add(btnDjo);
+		
+		btnDjo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(0);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Federer */
+		JLabel Federer = new JLabel("Federer");
+		Federer.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/federer.jpg")));
+		Federer.setBounds(64, 258, 80, 80);
+		ATP_Player.add(Federer);
+		
+		JButton btnFed = new JButton("Federer");
+		btnFed.setBounds(158, 284, 110, 30);
+		ATP_Player.add(btnFed);
+		
+		btnFed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(1);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+
+		/* Murray */
+		JLabel Murray = new JLabel("Murray");
+		Murray.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/murray.jpg")));
+		Murray.setBounds(64, 363, 80, 80);
+		ATP_Player.add(Murray);
+		
+		JButton btnMur = new JButton("Murray");
+		btnMur.setBounds(158, 389, 110, 30);
+		ATP_Player.add(btnMur);
+		
+		btnMur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(2);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Wawrinka */
+		JLabel Wawrinka = new JLabel("Wawrinka");
+		Wawrinka.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/wawrinka.jpg")));
+		Wawrinka.setBounds(64, 468, 80, 80);
+		ATP_Player.add(Wawrinka);
+		
+		JButton btnWaw = new JButton("Wawrinka");
+		btnWaw.setBounds(158, 494, 110, 30);
+		ATP_Player.add(btnWaw);
+		
+		btnWaw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(3);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Nishikori */
+		JLabel Nishikori = new JLabel("Nishikori");
+		Nishikori.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/nishikori.jpg")));
+		Nishikori.setBounds(64, 575, 80, 80);
+		ATP_Player.add(Nishikori);
+		
+		JButton btnNis = new JButton("Nishikori");
+		btnNis.setBounds(158, 601, 110, 30);
+		ATP_Player.add(btnNis);
+		
+		btnNis.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(4);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		
+		/* Berdych */
+		JLabel Berdych = new JLabel("Berdych");
+		Berdych.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/berdych.jpg")));
+		Berdych.setBounds(338, 153, 80, 80);
+		ATP_Player.add(Berdych);
+		
+		JButton btnBer = new JButton("Berdych");
+		btnBer.setBounds(430, 180, 110, 30);
+		ATP_Player.add(btnBer);
+		
+		btnBer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(5);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Nadal */
+		JLabel Nadal = new JLabel("Nadal");
+		Nadal.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/nadal.jpg")));
+		Nadal.setBounds(338, 258, 80, 80);
+		ATP_Player.add(Nadal);
+		
+		JButton btnNad = new JButton("Nadal");
+		btnNad.setBounds(430, 284, 110, 30);
+		ATP_Player.add(btnNad);
+		
+		btnNad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(6);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Ferrer */
+		JLabel Ferrer = new JLabel("Ferrer");
+		Ferrer.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/ferrer.jpg")));
+		Ferrer.setBounds(338, 363, 80, 80);
+		ATP_Player.add(Ferrer);
+		
+		JButton btnFer = new JButton("Ferrer");
+		btnFer.setBounds(430, 389, 110, 30);
+		ATP_Player.add(btnFer);
+		
+		btnFer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(7);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Gasquet */
+		JLabel Gasquet = new JLabel("Gasquet");
+		Gasquet.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/gasquet.jpg")));
+		Gasquet.setBounds(338, 468, 80, 80);
+		ATP_Player.add(Gasquet);
+		
+		JButton btnGas = new JButton("Gasquet");
+		btnGas.setBounds(430, 494, 110, 30);
+		ATP_Player.add(btnGas);
+		
+		btnGas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(8);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Tsonga */
+		JLabel Tsonga = new JLabel("Tsonga");
+		Tsonga.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/tsonga.jpg")));
+		Tsonga.setBounds(338, 575, 80, 80);
+		ATP_Player.add(Tsonga);
+		
+		JButton btnTso = new JButton("Tsonga");
+		btnTso.setBounds(430, 601, 110, 30);
+		ATP_Player.add(btnTso);
+		
+		btnTso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10ATPplayers().get(9);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				ATP_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					ATP_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		// go back to tennis homepage
+		JButton btnGoToTennisHomepage1 = new JButton("Go Back");
+		btnGoToTennisHomepage1.setBounds(42, 24, 117, 41);
+		ATP_Player.add(btnGoToTennisHomepage1);
+		
+		btnGoToTennisHomepage1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ATP_WTA.setVisible(true);
+				ATP_Player.setVisible(false);
+				Main_window.setVisible(false);
+			} 
+		});
+		
+		// ATP player panel background
+		JLabel ATP_final = new JLabel("");
+		ATP_final.setBounds(0, 0, 1280, 693);
+		ATP_final.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/atp-world-tour-finals.jpg")));
+		ATP_Player.add(ATP_final);
+		
+		/**
+		 * ATP_Schedule panel
+		 */
+		JPanel ATP_Schedule = new JPanel();
+		ATP_Schedule.setBackground(Color.WHITE);
+		frame.getContentPane().add(ATP_Schedule, "ATP_Schedule");
+		ATP_Schedule.setLayout(null);
+		
+		// go back to tennis homepage
+		JButton btnGoToTennisHomepage2 = new JButton("Go Back");
+		btnGoToTennisHomepage2.setBounds(35, 24, 117, 38);
+		ATP_Schedule.add(btnGoToTennisHomepage2);
+		
+		btnGoToTennisHomepage2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ATP_WTA.setVisible(true);
+				ATP_Schedule.setVisible(false);
+				Main_window.setVisible(false);
+			} 
+		});
+		
+		// dropdown box
+		JComboBox<String> atp_schedule_month = new JComboBox<String>();
+		atp_schedule_month.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		atp_schedule_month.setBounds(700, 90, 300, 30);
+		ATP_Schedule.add(atp_schedule_month);
+		
+		String[] month = {"January","February","March","April","May","June","July","August","September","October","November"};
+		for (String element : month) {
+			atp_schedule_month.addItem(element);
+		}
+		
+		JTextArea ATP_month_schedule = new JTextArea(10, 39);
+		ATP_month_schedule.setVisible(true);
+		ATP_month_schedule.setEditable(false);
+		ATP_month_schedule.setFont(new Font("Serif", Font.PLAIN, 25));
+		JScrollPane ATP_month_schedule_sp = new JScrollPane(ATP_month_schedule);
+		
+		ATP_month_schedule_sp.setBounds(240, 130, 800, 500);
+		ATP_Schedule.add(ATP_month_schedule_sp);
+		
+		// show the results
+		HashMap<String, ArrayList<TennisLeagueSchedule>> ATP2015Schedule = tennisSchedule.getATPschedule();
+		atp_schedule_month.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == atp_schedule_month) {
+					JComboBox<String> cb = (JComboBox<String>) e.getSource();
+					String SelectedMonth = (String)cb.getSelectedItem();
+					ArrayList<TennisLeagueSchedule> month_schedule = ATP2015Schedule.get(SelectedMonth);
+
+					ATP_month_schedule.setText("");
+					for (TennisLeagueSchedule element : month_schedule) {
+						String name = element.getName();
+						String start = element.getStart();
+						String end = element.getEnd();
+						String type = element.getType();
+						String ground = element.getGround();
+						String prize = element.getPrize();
+						String currency = element.getCurrency();
+						
+						prize = prize + " " + currency;
+												
+						ATP_month_schedule.append(name + "  " + start + " to " + end + "\n");
+						ATP_month_schedule.append("Type: " + type +  "; Ground: " + ground + "; Prize: " + prize + "\n\n");		
+					}
+				}
+			}
+		});
+		
+		// ATP schedule panel background
+		JLabel ATP_Schedule_Background = new JLabel("");
+		ATP_Schedule_Background.setVerticalAlignment(SwingConstants.TOP);
+		ATP_Schedule_Background.setHorizontalAlignment(SwingConstants.CENTER);
+		ATP_Schedule_Background.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/atp_player/atp-game-on-campaign-rafa-roge.jpg")));
+		ATP_Schedule_Background.setBounds(0, 0, 1280, 700);
+		ATP_Schedule.add(ATP_Schedule_Background);
+		
+		/**
+		 * WTA_Player panel
+		 */
+		JPanel WTA_Player = new JPanel();
+		WTA_Player.setBackground(Color.WHITE);
+		frame.getContentPane().add(WTA_Player, "WTA_Player");
+		WTA_Player.setLayout(null);
+		
+		JTextArea WTA_Player_Info  = new JTextArea(10, 20);
+		WTA_Player_Info.setVisible(true);
+		WTA_Player_Info.setEditable(false);
+		WTA_Player_Info.setFont(new Font("Serif", Font.PLAIN, 25));
+		JScrollPane WTAPlayerInfo_scroll = new JScrollPane(WTA_Player_Info);
+		
+		WTAPlayerInfo_scroll.setBounds(600, 100, 640, 550);
+		WTA_Player.add(WTAPlayerInfo_scroll);
+				
+		/* Serena William */
+		JLabel SWilliams = new JLabel("");
+		SWilliams.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/serena-williams-1.jpg")));
+		SWilliams.setBounds(64, 153, 80, 80);
+		WTA_Player.add(SWilliams);
+		
+		JButton btnSWil = new JButton("S. Williams");
+		btnSWil.setBounds(156, 180, 110, 30);
+		WTA_Player.add(btnSWil);
+		
+		btnSWil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(0);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Halep */
+		JLabel Halep = new JLabel("");
+		Halep.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/simona-halep-2.jpg")));
+		Halep.setBounds(64, 262, 80, 80);
+		WTA_Player.add(Halep);
+		
+		JButton btnHal = new JButton("Halep");
+		btnHal.setBounds(156, 289, 110, 30);
+		WTA_Player.add(btnHal);
+		
+		btnHal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(1);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Muguruza */
+		JLabel Muguruza = new JLabel("");
+		Muguruza.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/garbine_muguruza_3.jpg")));
+		Muguruza.setBounds(64, 366, 80, 80);
+		WTA_Player.add(Muguruza);
+		
+		JButton btnMug = new JButton("Muguruza");
+		btnMug.setBounds(156, 394, 110, 30);
+		WTA_Player.add(btnMug);
+		
+		btnMug.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(2);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Sharapova */
+		JLabel Sharapova = new JLabel("");
+		Sharapova.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/sarapova-4.jpg")));
+		Sharapova.setBounds(64, 473, 80, 80);
+		WTA_Player.add(Sharapova);
+		
+		JButton btnSha = new JButton("Sharapova");
+		btnSha.setBounds(156, 496, 110, 30);
+		WTA_Player.add(btnSha);
+		
+		btnSha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(3);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Radwanska */
+		JLabel Radwanska = new JLabel("");
+		Radwanska.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/radwanska-5.jpg")));
+		Radwanska.setBounds(64, 581, 80, 80);
+		WTA_Player.add(Radwanska);
+		
+		JButton btnRad = new JButton("Radwanska");
+		btnRad.setBounds(156, 607, 110, 30);
+		WTA_Player.add(btnRad);
+		
+		btnRad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(4);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Kvitova */
+		JLabel Kvitova = new JLabel("");
+		Kvitova.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/kvitova-6.jpg")));
+		Kvitova.setBounds(307, 153, 80, 80);
+		WTA_Player.add(Kvitova);
+		
+		JButton btnKvi = new JButton("Kvitova");
+		btnKvi.setBounds(399, 180, 110, 30);
+		WTA_Player.add(btnKvi);
+		
+		btnKvi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(5);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Venus Williams */
+		JLabel VWilliams = new JLabel("");
+		VWilliams.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/williams-7.jpg")));
+		VWilliams.setBounds(307, 262, 80, 80);
+		WTA_Player.add(VWilliams);
+		
+		JButton btnVWi = new JButton("V. Williams");
+		btnVWi.setBounds(399, 289, 110, 30);
+		WTA_Player.add(btnVWi);
+		
+		btnVWi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(6);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Pennetta */
+		JLabel Pennetta = new JLabel("");
+		Pennetta.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/pennetta-8.jpg")));
+		Pennetta.setBounds(307, 366, 80, 80);
+		WTA_Player.add(Pennetta);
+		
+		JButton btnPen = new JButton("Pennetta");
+		btnPen.setBounds(399, 394, 110, 30);
+		WTA_Player.add(btnPen);
+		
+		btnPen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(7);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		/* Safarova */
+		JLabel Safarova = new JLabel("");
+		Safarova.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/safarova-9.jpg")));
+		Safarova.setBounds(307, 473, 80, 80);
+		WTA_Player.add(Safarova);
+		
+		JButton btnSaf = new JButton("Safarova");
+		btnSaf.setBounds(399, 496, 110, 30);
+		WTA_Player.add(btnSaf);
+		
+		btnSaf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(8);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		
+		/* Kerber */
+		JLabel Kerber = new JLabel("");
+		Kerber.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/kerber-10.jpg")));
+		Kerber.setBounds(307, 581, 80, 80);
+		WTA_Player.add(Kerber);
+		
+		JButton btnKer = new JButton("Safarova");
+		btnKer.setBounds(399, 607, 110, 30);
+		WTA_Player.add(btnKer);
+		
+		btnKer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TennisPlayer player = tennisInfo.getTop10WTAplayers().get(9);
+				String name = player.getName();
+				String ranking = player.getRanking();
+				String ranking_points = player.getRanking_points();
+				HashMap<String, String> tournament_round = player.getTournament_round();
+				
+				WTA_Player_Info.setText("Name: " + name + "\n\n" + "Ranking: " + ranking + "\n\n" + "Ranking points: " + ranking_points + "points\n\nTournaments in 2015:\n" );
+				
+				for (String element : tournament_round.keySet()) {
+					WTA_Player_Info.append("     " + element + " - " + tournament_round.get(element) + "\n" );
+				}
+			} 
+		});
+		
+		JButton btnGoToTennisHomepage3 = new JButton("Go Back");
+		btnGoToTennisHomepage3.setBounds(30, 21, 117, 29);
+		WTA_Player.add(btnGoToTennisHomepage3);
+		
+		btnGoToTennisHomepage3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ATP_WTA.setVisible(true);
+				WTA_Player.setVisible(false);
+				Main_window.setVisible(false);
+			} 
+		});
+			
+		// WTA player panel background
+		JLabel WTA_final = new JLabel("");
+		WTA_final.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/wta_final.jpg")));
+		WTA_final.setBounds(0, 0, 1280, 718);
+		WTA_Player.add(WTA_final);
+		
+
+		/**
+		 * WTA_Schedule panel
+		 */
+		JPanel WTA_Schedule = new JPanel();
+		WTA_Schedule.setBackground(Color.WHITE);
+		frame.getContentPane().add(WTA_Schedule, "WTA_Schedule");
+		WTA_Schedule.setLayout(null);
+		
+		// go back to tennis homepage
+		JButton btnGoToTennisHomepage4 = new JButton("Go Back");
+		btnGoToTennisHomepage4.setBounds(35, 24, 117, 38);
+		WTA_Schedule.add(btnGoToTennisHomepage4);
+		
+		btnGoToTennisHomepage4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ATP_WTA.setVisible(true);
+				WTA_Schedule.setVisible(false);
+				Main_window.setVisible(false);
+			} 
+		});
+		
+		// dropdown box
+		JComboBox<String> wta_schedule_month = new JComboBox<String>();
+		wta_schedule_month.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		wta_schedule_month.setBounds(700, 90, 300, 30);
+		WTA_Schedule.add(wta_schedule_month);
+		
+		for (String element : month) {
+			wta_schedule_month.addItem(element);
+		}
+		
+		JTextArea WTA_month_schedule = new JTextArea(10, 39);
+		WTA_month_schedule.setVisible(true);
+		WTA_month_schedule.setEditable(false);
+		WTA_month_schedule.setFont(new Font("Serif", Font.PLAIN, 25));
+		JScrollPane WTA_month_schedule_sp = new JScrollPane(WTA_month_schedule);
+		
+		WTA_month_schedule_sp.setBounds(240, 130, 800, 500);
+		WTA_Schedule.add(WTA_month_schedule_sp);
+		
+		// print out the results
+		HashMap<String, ArrayList<TennisLeagueSchedule>> WTA2015Schedule = tennisSchedule.getWTAschedule();
+		wta_schedule_month.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == wta_schedule_month) {
+					JComboBox<String> cb = (JComboBox<String>) e.getSource();
+					String SelectedMonth = (String)cb.getSelectedItem();
+					ArrayList<TennisLeagueSchedule> month_schedule = WTA2015Schedule.get(SelectedMonth);
+
+					WTA_month_schedule.setText("");
+					for (TennisLeagueSchedule element : month_schedule) {
+						String name = element.getName();
+						String start = element.getStart();
+						String end = element.getEnd();
+						String type = element.getType();
+						String ground = element.getGround();
+						String prize = element.getPrize();
+						String currency = element.getCurrency();
+						
+						prize = prize + " " + currency;
+												
+						WTA_month_schedule.append(name + "  " + start + " to " + end + "\n");
+						WTA_month_schedule.append("Type: " + type +  "; Ground: " + ground + "; Prize: " + prize + "\n\n");		
+					}
+				}
+			}
+		});
+		
+		// WTA schedule panel background
+		JLabel WTA_Schedule_Background = new JLabel("");
+		WTA_Schedule_Background.setVerticalAlignment(SwingConstants.BOTTOM);
+		WTA_Schedule_Background.setHorizontalAlignment(SwingConstants.CENTER);
+		WTA_Schedule_Background.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/wta_player/wta-tennis.jpg")));
+		WTA_Schedule_Background.setBounds(0, 0, 1280, 700);
+		WTA_Schedule.add(WTA_Schedule_Background);
+		
+		/**
+		 * Buttons on Tennis Homepage
+		 */
+		JButton goToATP_Player_panel = new JButton("ATP Player");
+		goToATP_Player_panel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Main_window.setVisible(false);
 				ATP_WTA.setVisible(false);
-				
-				
+				ATP_Player.setVisible(true);
 			}
 		});
-		goToATPpanel.setBounds(305, 597, 117, 29);
-		ATP_WTA.add(goToATPpanel);
+		goToATP_Player_panel.setBounds(251, 580, 117, 29);
+		ATP_WTA.add(goToATP_Player_panel);
 		
+		JButton goToATP_Schedule_panel = new JButton("ATP Schedule");
+		goToATP_Schedule_panel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main_window.setVisible(false);
+				ATP_WTA.setVisible(false);
+				ATP_Schedule.setVisible(true);
+			}
+		});
+		goToATP_Schedule_panel.setBounds(449, 580, 117, 29);
+		ATP_WTA.add(goToATP_Schedule_panel);
+		
+		
+		JButton goWTA_Player_panel = new JButton("WTA Player");
+		goWTA_Player_panel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main_window.setVisible(false);
+				ATP_WTA.setVisible(false);
+				WTA_Player.setVisible(true);
+			}
+		});
+		goWTA_Player_panel.setBounds(757, 580, 117, 29);
+		ATP_WTA.add(goWTA_Player_panel);
+		
+		JButton goWTA_Schedule_panel = new JButton("WTA Schedule");
+		goWTA_Schedule_panel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main_window.setVisible(false);
+				ATP_WTA.setVisible(false);
+				WTA_Schedule.setVisible(true);
+			}
+		});
+		goWTA_Schedule_panel.setBounds(945, 580, 117, 29);
+		ATP_WTA.add(goWTA_Schedule_panel);
+		/**
+		 * End of Tennis Page
+		 */
+		
+		
+		
+		/**
+		 * football
+		 */
 		
 		JButton btnFifa = new JButton("FIFA");
 		btnFifa.addActionListener(new ActionListener() {
@@ -531,4 +1330,5 @@ public class Sports_miniWiki {
 		Main_window.add(lblNewLabel);
 
 	}
+
 }

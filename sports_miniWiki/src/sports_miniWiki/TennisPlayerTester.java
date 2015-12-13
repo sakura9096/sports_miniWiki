@@ -15,12 +15,12 @@ public class TennisPlayerTester {
 
 		for(TennisPlayer element : wta) {
 			System.out.println(element.getName());
-			System.out.println(element.getRanking());
-			System.out.println(element.getRanking_points());
-			HashMap<String, String> myhash = element.getTournament_round();
+			//System.out.println(element.getRanking());
+			//System.out.println(element.getRanking_points());
+			/*HashMap<String, String> myhash = element.getTournament_round();
 			for (String key : myhash.keySet()) {
 				System.out.println(key + "     " + myhash.get(key));
-			}
+			}*/
 		}
 		
 	}

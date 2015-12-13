@@ -1,5 +1,9 @@
 package sports_miniWiki;
 
+/**
+ * This class call the API for 2015 ATP and WTA schedule
+ */
+
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -26,30 +30,45 @@ public class GetTennisSchedule {
 	 * 2015 ATP & WTA schedule's id on sportradar
 	 */
 	private static final String ATP_ID = "d847c9f6-9cda-4ed5-9fad-c66679525f94" ;
-	
 	private static final String WTA_ID = "cc29a401-9f3d-4fd6-ab3b-add83376e881" ;
 	
-
+	/**
+	 * constructor
+	 * get the schedule for each month of ATP and WTA and store in a HashMap
+	 * @throws Exception
+	 */
 	public GetTennisSchedule() throws Exception {
 		ATP_schedule = getSchedule(ATP_ID);
 		TimeUnit.SECONDS.sleep(1);
-		WTA_schedule= getSchedule(WTA_ID);	
+		WTA_schedule= getSchedule(WTA_ID);
+		TimeUnit.SECONDS.sleep(1);
 	}
 	
+	/**
+	 * @return a HashMap with 2015 ATP schedule information
+	 */
 	public HashMap<String, ArrayList<TennisLeagueSchedule>> getATPschedule() {
 		return ATP_schedule;
 	}
 	
+	/**
+	 * @return a HashMap with 2015 WTA schedule information
+	 */
 	public HashMap<String, ArrayList<TennisLeagueSchedule>> getWTAschedule() {
 		return WTA_schedule;
 	}
 	
-	
+	/**
+	 * get the schedule information by calling the API
+	 * @param id league id
+	 * @return	a HashMap with each month's schedule
+	 * @throws Exception
+	 */
 	private HashMap<String, ArrayList<TennisLeagueSchedule>> getSchedule(String id) throws Exception {
 		
 		HashMap<String, ArrayList<TennisLeagueSchedule>> schedule = new HashMap<String, ArrayList<TennisLeagueSchedule>> ();
 		
-		String link = "http://api.sportradar.us/tennis-t1/:season/" + id + "/schedule.xml?api_key=hn38fgde5cn377xexv4a9rg6";
+		String link = "http://api.sportradar.us/tennis-t1/:season/" + id + "/schedule.xml?api_key=hbnefvjkssda5f3xa4tctnfd";
 		
 		URL url = new URL(link);
 		URLConnection connection = url.openConnection();
@@ -86,7 +105,6 @@ public class GetTennisSchedule {
 					currency = tournament.item(j).getAttributes().getNamedItem("prize_currency").getTextContent();
 				} catch(Exception e) {}
 				
-				//System.out.println(tournament_name + " " + start + " " + end + " " + " " + type + " " + ground + " " + prize + " " + currency);
 				TennisLeagueSchedule oneTournament = new TennisLeagueSchedule(tournament_name, start, end, type, ground, prize, currency);
 				month_schedule.add(oneTournament);
 			}
@@ -98,6 +116,12 @@ public class GetTennisSchedule {
 		
 	}
 	
+	/**
+	 * parse XML file
+	 * @param stream
+	 * @return
+	 * @throws Exception
+	 */
 	private Document parseXML(InputStream stream) throws Exception {
 		DocumentBuilderFactory objDocumentBuilderFactory = null;
         DocumentBuilder objDocumentBuilder = null;

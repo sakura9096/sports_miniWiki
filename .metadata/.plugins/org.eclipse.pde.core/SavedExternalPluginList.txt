@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# List of external plug-in models previously loaded. Timestamp: 1449933457053
-=======
-# List of external plug-in models previously loaded. Timestamp: 1449864227502
->>>>>>> upstream/master
+# List of external plug-in models previously loaded. Timestamp: 1449966718146
 file:/Applications/Eclipse.app/Contents/Eclipse/plugins/ch.qos.logback.classic_1.0.7.v20121108-1250.jar
 file:/Applications/Eclipse.app/Contents/Eclipse/plugins/ch.qos.logback.core_1.0.7.v20121108-1250.jar
 file:/Applications/Eclipse.app/Contents/Eclipse/plugins/ch.qos.logback.slf4j_1.0.7.v201505121915.jar
