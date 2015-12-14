@@ -1,0 +1,77 @@
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class Tennis_APICaller {
+	
+	public static void main(String[] args) {
+		try {
+			new Tennis_APICaller().start();			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void start () throws Exception {
+		URL url = new URL("http://api.sportradar.us/tennis-t1/competitor/5751bac3-3661-4ae6-8257-481e032fd33b/summary.xml?api_key=hn38fgde5cn377xexv4a9rg6");
+		URLConnection connection = url.openConnection();
+		
+		//Document doc = parseXML(connection.getInputStream());
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(connection.getInputStream());
+        
+        doc.getDocumentElement().normalize();
+			
+		//NodeList competitor = doc.getElementsByTagName("competitor");
+		NodeList tournament = doc.getElementsByTagName("tournament");
+		System.out.println(tournament.getLength());
+		
+		//System.out.println(competitor.item(0).getAttributes().getNamedItem("name"));
+		//System.out.println(competitor.item(0).getAttributes().getNamedItem("ranking"));
+		//System.out.println(competitor.item(0).getAttributes().getNamedItem("ranking_points"));
+		
+		/*for (int i = 0; i < tournament.getLength(); i++) {
+			Node nNode = tournament.item(i);
+			Node match = nNode.getLastChild();
+            System.out.println("\nCurrent Element :" + match.getAttributes().getNamedItem("round"));
+			/*
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+            	Element eElement = (Element) nNode;
+            	System.out.println(eElement.getElementsByTagName("match").item(0).);
+            }*/
+			//System.out.println(tournament.item(i).getAttributes().getNamedItem("name"));
+			
+			//System.out.println(tournament.item(i).getLastChild().getAttributes().getNamedItem("round"));
+		}/*
+	}
+	/*
+	private Document parseXML(InputStream stream) throws Exception {
+		DocumentBuilderFactory objDocumentBuilderFactory = null;
+        DocumentBuilder objDocumentBuilder = null;
+        Document doc = null;
+        try
+        {
+            objDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
+            objDocumentBuilder = objDocumentBuilderFactory.newDocumentBuilder();
+
+            doc = objDocumentBuilder.parse(stream);
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+        }       
+
+        return doc;
+		
+	}*/
+
+}

@@ -1,0 +1,30 @@
+package sports_miniWiki;
+
+import java.util.HashMap;
+
+public class TennisPlayer {
+	private String name;
+	private String ranking;
+	private String ranking_points;
+	private HashMap<String, String> tournament_round; 
+	
+	public TennisPlayer(String name, String ranking, String ranking_points, HashMap<String, String> tournament_round) {
+		this.name= name;
+		this.ranking = ranking;
+		this.ranking_points = ranking_points;
+		this.tournament_round = tournament_round;
+	}
+
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

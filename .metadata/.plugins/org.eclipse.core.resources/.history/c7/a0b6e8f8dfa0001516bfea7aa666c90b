@@ -1,0 +1,92 @@
+package sports_miniWiki;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class GetTennisSchedule {
+	
+	/**
+	 * instance variables: ATP & WTA schedule
+	 */
+	private ArrayList<TennisLeagueSchedule> ATP_schedule = new ArrayList<TennisLeagueSchedule> ();
+	private ArrayList<TennisLeagueSchedule> WTA_Schedule = new ArrayList<TennisLeagueSchedule> ();
+	
+	/**
+	 * 2015 ATP & WTA schedule's id on sportradar
+	 */
+	private static final String ATP_ID = "d847c9f6-9cda-4ed5-9fad-c66679525f94" ;
+	
+	private static final String WTA_ID = "cc29a401-9f3d-4fd6-ab3b-add83376e881" ;
+	
+		
+	private void getSchedule(String id) throws Exception {
+		
+		HashMap<String, ArrayList<TennisLeagueSchedule>> schedule = new HashMap<String, ArrayList<TennisLeagueSchedule>> ();
+		
+		String link = "http://api.sportradar.us/tennis-t1/:season/d847c9f6-9cda-4ed5-9fad-c66679525f94/schedule.xml?api_key=hn38fgde5cn377xexv4a9rg6";
+		
+		URL url = new URL(link);
+		URLConnection connection = url.openConnection();
+	
+		Document doc = parseXML(connection.getInputStream());
+	
+		NodeList month = doc.getElementsByTagName("month");
+		NodeList tournament = doc.getElementsByTagName("tournament");
+	
+		for (int i = 0; i < month.getLength(); i++) {
+			String name = "unknown";
+			String start = "0000-00-00";
+			String end = "0000-00-00";
+			String type = "unknown";
+			String ground = "unknown";
+			String prize = "unknown";
+			String city = "unknown";
+			String country = "unknown";
+						
+			name = month.item(i).getAttributes().getNamedItem("name").getTextContent();
+			
+			Element month_node = (Element) month.item(i);
+			
+			NodeList node  = month_node.getElementsByTagName("tournament");
+			
+			System.out.println(name + "    " + node.getLength());
+
+	}
+		
+		TimeUnit.SECONDS.sleep(1);
+		
+}
+	
+	private Document parseXML(InputStream stream) throws Exception {
+		DocumentBuilderFactory objDocumentBuilderFactory = null;
+        DocumentBuilder objDocumentBuilder = null;
+        Document doc = null;
+        try
+        {
+            objDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
+            objDocumentBuilder = objDocumentBuilderFactory.newDocumentBuilder();
+
+            doc = objDocumentBuilder.parse(stream);
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+        }       
+
+        return doc;
+		
+	}
+	
+}

@@ -1,0 +1,20 @@
+package sports_miniWiki;
+
+public class TennisLeagueSchedule {
+	private String name;
+	private String start;
+	private String end;
+	private String type;
+	private String ground;
+	private String prize;
+	
+	public TennisLeagueSchedule(String name, String start, String end, String type, String ground, String prize) {
+		this.name= name;
+		this.start = start;
+		this.end = end;
+		this.type = type;
+		this.ground = ground;
+		this.prize = prize;
+	}
+
+}

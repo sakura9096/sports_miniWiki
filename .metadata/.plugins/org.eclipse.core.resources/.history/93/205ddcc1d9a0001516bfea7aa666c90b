@@ -1,0 +1,93 @@
+package sports_miniWiki;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class GetTennisSchedule {
+	
+	
+	
+	
+	
+	private ArrayList<TennisLeagueSchedule> getSchedule(String id) throws Exception {
+		
+		ArrayList<TennisLeagueSchedule> schedule = new ArrayList<TennisLeagueSchedule> ();
+	
+		String link = "http://api.sportradar.us/tennis-t1/:season/d847c9f6-9cda-4ed5-9fad-c66679525f94/schedule.xml?api_key=hn38fgde5cn377xexv4a9rg6";
+		String name = "unknown";
+		String ranking = "0";
+		String ranking_points = "0";
+	
+		URL url = new URL(link);
+		URLConnection connection = url.openConnection();
+	
+		Document doc = parseXML(connection.getInputStream());
+	
+		NodeList competitor = doc.getElementsByTagName("competitor");
+		NodeList tournament = doc.getElementsByTagName("tournament");
+
+		name = competitor.item(0).getAttributes().getNamedItem("name").getTextContent();
+	
+		try {
+			ranking = competitor.item(0).getAttributes().getNamedItem("ranking").getTextContent();
+			ranking_points = competitor.item(0).getAttributes().getNamedItem("ranking_points").getTextContent();
+		} catch (Exception e) {}
+	
+		HashMap<String, String> tour_round = new HashMap<String, String> ();
+	
+		for (int i = 0; i < tournament.getLength(); i++) {
+			String tour = tournament.item(i).getAttributes().getNamedItem("name").getTextContent();
+			Node node  = tournament.item(i).getLastChild();
+			String round = "Qualification round";
+		
+			while (node != null && node.getNodeType() != Node.ELEMENT_NODE) {
+				node = node.getPreviousSibling();
+			}
+		
+			try{
+				round = node.getAttributes().getNamedItem("round").getTextContent(); 
+			} catch(Exception e) {}
+			
+			tour_round.put(tour, round);
+		}
+	
+		TennisLeagueSchedule atp_player = new TennisLeagueSchedule(name, ranking, ranking_points, tour_round);
+		schedule.add(atp_player);
+	
+		TimeUnit.SECONDS.sleep(1);
+		
+		return schedule;
+}
+	
+	private Document parseXML(InputStream stream) throws Exception {
+		DocumentBuilderFactory objDocumentBuilderFactory = null;
+        DocumentBuilder objDocumentBuilder = null;
+        Document doc = null;
+        try
+        {
+            objDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
+            objDocumentBuilder = objDocumentBuilderFactory.newDocumentBuilder();
+
+            doc = objDocumentBuilder.parse(stream);
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+        }       
+
+        return doc;
+		
+	}
+	
+}

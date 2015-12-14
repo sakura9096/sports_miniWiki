@@ -1,0 +1,20 @@
+package sports_miniWiki;
+
+import java.util.ArrayList;
+
+public class TennisPlayerTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		GetTennisPlayerInfo playerInfo = new GetTennisPlayerInfo();
+		
+		ArrayList<TennisPlayer> apt = playerInfo.getTop10ATPplayers();
+		ArrayList<TennisPlayer> wta = playerInfo.getTop10WTAplayers();
+
+		
+		
+		
+	}
+
+}
