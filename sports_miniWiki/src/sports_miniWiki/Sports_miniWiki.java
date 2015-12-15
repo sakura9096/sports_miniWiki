@@ -98,12 +98,13 @@ public class Sports_miniWiki {
 		
 		
 		/*
-		 * This is the NBA page.
+		 * This is the NBA page. It contains three sub-pages.
 		 */
+		
+		// NBA panel is the main panel of this part.
 		final JPanel NBA = new JPanel();
 		frame.getContentPane().add(NBA, "name_75555177344305");
 		NBA.setLayout(null);
-		
 		
 		JButton btnHome_1 = new JButton("Home");
 		btnHome_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -116,7 +117,7 @@ public class Sports_miniWiki {
 		btnHome_1.setBounds(25, 25, 120, 40);
 		NBA.add(btnHome_1);
 		
-		// A sub-page in NBA.
+		// A sub-page in NBA. It contains the NBA leaders information.
 		NBALeagueLeaders nbaLeaders = new NBALeagueLeaders();
 		
 		JPanel NBA_leaders = new JPanel();
@@ -236,7 +237,6 @@ public class Sports_miniWiki {
 		JPanel NBA_schedule = new JPanel();
 		frame.getContentPane().add(NBA_schedule, "name_111337211737580");
 		NBA_schedule.setLayout(null);
-		
 		
 		JComboBox<String> comboBoxDate = new JComboBox<String>();
 		comboBoxDate.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -407,6 +407,8 @@ public class Sports_miniWiki {
 		NBA_teams.add(lblNbateambackground);
 		
 		
+		// The followings are the JButton on the main NBA page.
+		
 		JButton btnTeamProfile = new JButton("Team Rosters");
 		btnTeamProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -443,6 +445,7 @@ public class Sports_miniWiki {
 		buttonLeaders.setBounds(150, 180, 200, 80);
 		NBA.add(buttonLeaders);
 		
+		// This is the background of the NBA main page.
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_trophy.jpg")));
 		lblNewLabel_1.setBounds(0, 0, 1280, 720);
@@ -1284,7 +1287,7 @@ public class Sports_miniWiki {
 		
 		
 		/**
-		 * football
+		 * Buttons on Main_window.
 		 */
 		
 		JButton btnFifa = new JButton("FIFA");

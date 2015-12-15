@@ -1,0 +1,51 @@
+/**
+ * 
+ */
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * This is a test class for the NBALeagueLeaders class.
+ * @author yuezhang
+ *
+ */
+public class NBALeagueLeaders_Test {
+
+	private NBALeagueLeaders nbaLeaders;
+	/**
+	 * @throws Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		nbaLeaders = new NBALeagueLeaders();
+	}
+
+	/**
+	 * This test case tests if the constructor works properly 
+	 * and the object of the NBALeagueLeaders class is not null.
+	 */
+	@Test
+	public void testNBALeagueLeadersNotNull() {
+		assertNotNull("NBALeagueLeaders should not be null", nbaLeaders);
+	}
+	
+	@Test 
+	public void testNBALeagueLeadersGetPointLeaders() {
+		assertNotNull("The ArrayList of pointsLeaders should not be null", nbaLeaders.getPointsLeaders());
+	}
+	
+	@Test
+	public void testNBALeagueLeadersGetAssistLeaders() {
+		assertNotNull("The ArrayList of assistsLeaders should not be null", nbaLeaders.getAssistsLeaders());
+	}
+	
+	@Test 
+	public void testNBALeagueLeadersGetPointLeaders() {
+		assertNotNull("The ArrayList of pointsLeaders should not be null", nbaLeaders.getPointsLeaders());
+	}
+
+}

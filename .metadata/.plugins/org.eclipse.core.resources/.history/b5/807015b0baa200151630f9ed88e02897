@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * @author yuezhang
+ *
+ */
+public class NBALeagueLeaders_Test {
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
