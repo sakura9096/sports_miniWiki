@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="NBALeagueLeaders_Test" project="sports_miniWiki" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="sports_miniWiki.NBALeagueLeaders_Test" time="8.124">
-    <testcase name="testNBALeagueLeadersGetPointLeaders" classname="sports_miniWiki.NBALeagueLeaders_Test" time="2.89"/>
-    <testcase name="testNBALeagueLeadersGetAssistLeaders" classname="sports_miniWiki.NBALeagueLeaders_Test" time="2.638"/>
-    <testcase name="testNBALeagueLeadersNotNull" classname="sports_miniWiki.NBALeagueLeaders_Test" time="2.595"/>
-  </testsuite>
-</testrun>
