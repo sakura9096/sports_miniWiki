@@ -8,8 +8,11 @@ This project serves as a miniWiki for three popular sports, including soccer(UCL
 WORK BREAKDOWN
 
 NBA Panel: Yue Zhang
+
 UCL Panel: Liangjin Zhao
+
 ATP&WTA Panel: Man Hu
+
 
 Github repo: https://github.com/cit-upenn/hw5-project-sports-miniwiki.git
 
