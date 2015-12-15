@@ -73,37 +73,111 @@ public class Sports_miniWiki {
 		
 		
 		/*
-		 * This is the FIFA page.
+		 * This is the UCL page.
 		 */
-		final JPanel FIFA = new JPanel();
-		frame.getContentPane().add(FIFA, "name_75551392776245");
-		FIFA.setLayout(null);
+		JPanel UCL_Teams = new JPanel();
+		frame.getContentPane().add(UCL_Teams, "name_1981053046332685");
+		UCL_Teams.setLayout(null);
+		
+		JButton btnHome_3 = new JButton("Home");
+		btnHome_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCL_Teams.setVisible(false);
+				Main_window.setVisible(true);
+			}
+		});
+		btnHome_3.setBounds(35, 6, 120, 40);
+		UCL_Teams.add(btnHome_3);
+		
+		JButton btnTRealmadrid = new JButton("Real Madrid");
+		btnTRealmadrid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnTRealmadrid.setBounds(38, 183, 117, 29);
+		UCL_Teams.add(btnTRealmadrid);
+		
+		JButton btnTPSG = new JButton("Paris");
+		btnTPSG.setBounds(221, 183, 117, 29);
+		UCL_Teams.add(btnTPSG);
+		
+		JButton btnTWolfsburg = new JButton("Wolfsburg");
+		btnTWolfsburg.setBounds(402, 183, 117, 29);
+		UCL_Teams.add(btnTWolfsburg);
+		
+		JButton btnTMancity = new JButton("Man City");
+		btnTMancity.setBounds(38, 395, 117, 29);
+		UCL_Teams.add(btnTMancity);
+		
+		JButton btnTJuventus = new JButton("Juventus");
+		btnTJuventus.setBounds(221, 395, 117, 29);
+		UCL_Teams.add(btnTJuventus);
+		
+		JLabel lblTeamProfileText = new JLabel("TEAM PROFILE");
+		lblTeamProfileText.setFont(new Font("Lucida Grande", Font.BOLD, 30));
+		lblTeamProfileText.setForeground(Color.WHITE);
+		lblTeamProfileText.setBounds(538, 370, 1280, 100);
+		UCL_Teams.add(lblTeamProfileText);
+		
+		JLabel lblUCL_trophy = new JLabel("UCL_trophy");
+		lblUCL_trophy.setBounds(0, 0, 1280, 720);
+		lblUCL_trophy.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCL_16RoundTeams.jpg")));
+		UCL_Teams.add(lblUCL_trophy);
+		
+		final JPanel UCL = new JPanel();
+		frame.getContentPane().add(UCL, "name_75551392776245");
+		UCL.setLayout(null);
 		
 		JButton btnHome = new JButton("Home");
 		btnHome.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FIFA.setVisible(false);
+				UCL.setVisible(false);
 				Main_window.setVisible(true);
 			}
 		});
 		btnHome.setBounds(25, 25, 120, 40);
-		FIFA.add(btnHome);
+		UCL.add(btnHome);
 		
-		JLabel lblFifabackground = new JLabel("FIFA_background");
-		lblFifabackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/FIFA_background.jpg")));
-		lblFifabackground.setBounds(-29, 6, 1280, 720);
-		FIFA.add(lblFifabackground);
-		FIFA.setVisible(false);
+		JButton btnFTeamProfile = new JButton("Team Profile");
+		btnFTeamProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCL.setVisible(false);
+				Main_window.setVisible(false);
+				UCL_Teams.setVisible(true);
+			}
+		});
 		
+		btnFTeamProfile.setBounds(162, 600, 122, 46);
+		UCL.add(btnFTeamProfile);
+		
+		JButton btnFPlayerProfile = new JButton("Player Profile");
+		btnFPlayerProfile.setBounds(412, 600, 122, 46);
+		UCL.add(btnFPlayerProfile);
+		
+		JButton btnFSchedule = new JButton("Schedule");
+		btnFSchedule.setBounds(662, 600, 122, 46);
+		UCL.add(btnFSchedule);
+		
+		JButton btnFWeekHighlights = new JButton("Week Highlights");
+		btnFWeekHighlights.setBounds(912, 600, 122, 46);
+		UCL.add(btnFWeekHighlights);
+		
+		JLabel lblUCL_background1 = new JLabel("UCL_background");
+		lblUCL_background1.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCL_logo.jpg")));
+		lblUCL_background1.setBounds(0, 0, 1280, 720);
+		UCL.add(lblUCL_background1);
+		UCL.setVisible(false);
 		
 		/*
-		 * This is the NBA page.
+		 * This is the NBA page. It contains three sub-pages.
 		 */
+
+		// NBA panel is the main panel of this part.
+
 		final JPanel NBA = new JPanel();
 		frame.getContentPane().add(NBA, "name_75555177344305");
 		NBA.setLayout(null);
-		
 		
 		JButton btnHome_1 = new JButton("Home");
 		btnHome_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -116,7 +190,7 @@ public class Sports_miniWiki {
 		btnHome_1.setBounds(25, 25, 120, 40);
 		NBA.add(btnHome_1);
 		
-		// A sub-page in NBA.
+		// A sub-page in NBA. It contains the NBA leaders information.
 		NBALeagueLeaders nbaLeaders = new NBALeagueLeaders();
 		
 		JPanel NBA_leaders = new JPanel();
@@ -236,7 +310,6 @@ public class Sports_miniWiki {
 		JPanel NBA_schedule = new JPanel();
 		frame.getContentPane().add(NBA_schedule, "name_111337211737580");
 		NBA_schedule.setLayout(null);
-		
 		
 		JComboBox<String> comboBoxDate = new JComboBox<String>();
 		comboBoxDate.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -407,6 +480,8 @@ public class Sports_miniWiki {
 		NBA_teams.add(lblNbateambackground);
 		
 		
+		// The followings are the JButton on the main NBA page.
+		
 		JButton btnTeamProfile = new JButton("Team Rosters");
 		btnTeamProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -443,6 +518,7 @@ public class Sports_miniWiki {
 		buttonLeaders.setBounds(150, 180, 200, 80);
 		NBA.add(buttonLeaders);
 		
+		// This is the background of the NBA main page.
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(this.getClass().getResource("/resources/NBA_trophy.jpg")));
 		lblNewLabel_1.setBounds(0, 0, 1280, 720);
@@ -1284,19 +1360,19 @@ public class Sports_miniWiki {
 		
 		
 		/**
-		 * football
+		 * Buttons on Main_window.
 		 */
 		
-		JButton btnFifa = new JButton("FIFA");
-		btnFifa.addActionListener(new ActionListener() {
+		JButton btnUCL = new JButton("UCL");
+		btnUCL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FIFA.setVisible(true);
+				UCL.setVisible(true);
 				Main_window.setVisible(false);
 			}
 		});
-		btnFifa.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-		btnFifa.setBounds(200, 520, 200, 80);
-		Main_window.add(btnFifa);
+		btnUCL.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		btnUCL.setBounds(200, 520, 200, 80);
+		Main_window.add(btnUCL);
 		
 		JButton btnNba = new JButton("NBA");
 		btnNba.addActionListener(new ActionListener() {
@@ -1326,7 +1402,7 @@ public class Sports_miniWiki {
 		lblNewLabel.setSize(720, 480);
 		lblNewLabel.setBounds(0, 0, 1280, 720);
 		Main_window.add(lblNewLabel);
-
+		
 	}
 
 }

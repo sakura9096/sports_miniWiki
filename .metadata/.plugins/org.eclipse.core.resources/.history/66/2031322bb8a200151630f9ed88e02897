@@ -1,0 +1,27 @@
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * This is a test class for the NBASchedule_Individual class.
+ * @author yuezhang
+ *
+ */
+public class NBASchedule_Individual_Test {
+
+	NBASchedule_Individual schedule;
+	
+	@Before
+	public void setUp() {
+		schedule = new NBASchedule_Individual();
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
