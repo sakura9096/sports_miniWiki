@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SessionExportWizard">
+		<item value="HTML" key="SessionExportPage1.format"/>
+		<list key="SessionExportPage1.destinations">
+			<item value="/Users/yuezhang/Google Drive/UPenn/Classes/CIT 591/Project/Summary"/>
+		</list>
+	</section>
+</section>

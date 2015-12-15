@@ -25,9 +25,7 @@ import java.awt.CardLayout;
 import javax.swing.JComboBox;
 
 import java.awt.Color;
-//import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import javax.swing.JSlider;
 
 public class Sports_miniWiki {
 
@@ -39,9 +37,9 @@ public class Sports_miniWiki {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
+				try {					
 					Sports_miniWiki window = new Sports_miniWiki();
-					window.frame.setVisible(true);
+					window.frame.setVisible(true);					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -532,7 +530,7 @@ public class Sports_miniWiki {
 		
 
 		/*
-		 * This is the NBA page. It contains three sub-pages.
+		 * This is the NBA page. It contains one main page and three sub-pages.
 		 */
 
 		// NBA panel is the main panel of this part.
@@ -842,7 +840,6 @@ public class Sports_miniWiki {
 		
 		
 		// The followings are the JButton on the main NBA page.
-		
 		JButton btnTeamProfile = new JButton("Team Rosters");
 		btnTeamProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -886,10 +883,10 @@ public class Sports_miniWiki {
 		NBA.add(lblNewLabel_1);
 		NBA.setVisible(false);
 		
-//		/**
-//		 * ATP_WTA panel, created by Man Hu
-//		 */
-		// call Tennis API
+		/**
+		 * ATP_WTA panel, created by Man Hu
+		 */
+		//call Tennis API
 		GetTennisPlayerInfo tennisInfo = new GetTennisPlayerInfo();
 		TimeUnit.SECONDS.sleep(1);
 		GetTennisSchedule tennisSchedule = new GetTennisSchedule();
@@ -1722,8 +1719,7 @@ public class Sports_miniWiki {
 		
 		/**
 		 * Buttons on Main_window.
-		 */
-		
+		 */		
 		JButton btnUCL = new JButton("UCL");
 		btnUCL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1750,7 +1746,7 @@ public class Sports_miniWiki {
 		JButton btnAtpWta = new JButton("ATP & WTA");
 		btnAtpWta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				ATP_WTA.setVisible(true);
+				ATP_WTA.setVisible(true);
 				Main_window.setVisible(false);
 			}
 		});
