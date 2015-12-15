@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.127+/Users/yuezhang/Documents/sports_miniWiki/.metadata/.plugins/org.eclipse.jdt.core
 3145990890.index
 2777386132.index
@@ -7,15 +8,27 @@ INDEX VERSION 1.127+/Users/yuezhang/Documents/sports_miniWiki/.metadata/.plugins
 965335243.index
 3340484257.index
 3785765040.index
-1271342938.index
-786462423.index
-1116271856.index
-677361136.index
-346711152.index
-3369272816.index
-4082578982.index
+=======
+INDEX VERSION 1.127+/Users/MHu/Documents/CIT591/sports_miniWiki/.metadata/.plugins/org.eclipse.jdt.core
+4236265088.index
+2125161141.index
+3856011051.index
+2123209889.index
+1462576478.index
+3340484257.index
+3935624324.index
+3494619248.index
+3077440633.index
 2123334571.index
-3975215079.index
-3199462873.index
-489563832.index
-2147531794.index
+3156421207.index
+1710459378.index
+1937382768.index
+2337468814.index
+2678521682.index
+3310743309.index
+>>>>>>> 9e7d25052d1c24b5e8819a50a30b551996e63c0d
+1271342938.index
+257892957.index
+677361136.index
+524126782.index
+3925981911.index

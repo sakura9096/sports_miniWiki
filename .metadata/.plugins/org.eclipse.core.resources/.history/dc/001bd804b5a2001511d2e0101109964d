@@ -1,0 +1,14 @@
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class GetTennisPlayerInfoTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

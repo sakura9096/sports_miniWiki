@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.junit.Before"/>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="sports_miniWiki.NBALeagueLeaders"/>
 <fullyQualifiedTypeName name="sports_miniWiki.NBATeamProfile"/>
+=======
+>>>>>>> 9e7d25052d1c24b5e8819a50a30b551996e63c0d
 </qualifiedTypeNameHistroy>
