@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="NBALeaders_Individual_Test" project="sports_miniWiki" tests="25" started="25" failures="0" errors="3" ignored="0">
+  <testsuite name="sports_miniWiki.NBALeaders_Individual_Test" time="0.0">
+    <testcase name="testNBALeaders_Individual_toString" classname="sports_miniWiki.NBALeaders_Individual_Test" time="0.0"/>
+    <testcase name="testNBALeaders_Individual_NotNull" classname="sports_miniWiki.NBALeaders_Individual_Test" time="0.0"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.NBASchedule_Test" time="7.618">
+    <testcase name="testNBA_Schedule_GetStoredSchedule" classname="sports_miniWiki.NBASchedule_Test" time="2.977"/>
+    <testcase name="testNBA_Scheule_NotNull" classname="sports_miniWiki.NBASchedule_Test" time="4.641"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.Sports_miniWiki_Test" time="39.881">
+    <testcase name="testSports_miniWiki_NotNull" classname="sports_miniWiki.Sports_miniWiki_Test" time="39.881"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.GetTennisScheduleTest" time="12.788">
+    <testcase name="testScheduleNotNull" classname="sports_miniWiki.GetTennisScheduleTest" time="2.122"/>
+    <testcase name="testTournamentAttributes" classname="sports_miniWiki.GetTennisScheduleTest" time="2.115"/>
+    <testcase name="testTournamentName" classname="sports_miniWiki.GetTennisScheduleTest" time="2.123"/>
+    <testcase name="testTournamentTime" classname="sports_miniWiki.GetTennisScheduleTest" time="2.15"/>
+    <testcase name="testWTAScheduleMonthNumber" classname="sports_miniWiki.GetTennisScheduleTest" time="2.14"/>
+    <testcase name="testATPScheduleMonthNumber" classname="sports_miniWiki.GetTennisScheduleTest" time="2.138"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.NBALeagueLeaders_Test" time="8.585">
+    <testcase name="testNBALeagueLeadersGetPointLeaders" classname="sports_miniWiki.NBALeagueLeaders_Test" time="2.634"/>
+    <testcase name="testNBALeagueLeadersGetAssistLeaders" classname="sports_miniWiki.NBALeagueLeaders_Test" time="3.281"/>
+    <testcase name="testNBALeagueLeadersNotNull" classname="sports_miniWiki.NBALeagueLeaders_Test" time="2.67"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.NBATeamProfile_test" time="8.546">
+    <testcase name="testNBATeamProfile_NotNull" classname="sports_miniWiki.NBATeamProfile_test" time="8.546"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.NBASchedule_Individual_Test" time="0.001">
+    <testcase name="testGetDate" classname="sports_miniWiki.NBASchedule_Individual_Test" time="0.0"/>
+    <testcase name="testNBASchedule_Individual_NotNull" classname="sports_miniWiki.NBASchedule_Individual_Test" time="0.001"/>
+    <testcase name="testNBASchedule_Individual_toString" classname="sports_miniWiki.NBASchedule_Individual_Test" time="0.0"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.NBAPlayer_Test" time="0.0">
+    <testcase name="testNBAPlayer_NotNull" classname="sports_miniWiki.NBAPlayer_Test" time="0.0"/>
+  </testsuite>
+  <testsuite name="sports_miniWiki.GetTennisPlayerInfoTest" time="20.541">
+    <testcase name="testPlayerNotNull" classname="sports_miniWiki.GetTennisPlayerInfoTest" time="11.765"/>
+    <testcase name="testATPtop10PlayersNumber" classname="sports_miniWiki.GetTennisPlayerInfoTest" time="4.079"/>
+    <testcase name="testWTAtop10PlayersNumber" classname="sports_miniWiki.GetTennisPlayerInfoTest" time="4.083"/>
+    <testcase name="testPlayerOtherAttributes" classname="sports_miniWiki.GetTennisPlayerInfoTest" time="0.063">
+      <error>java.io.IOException: Server returned HTTP response code: 403 for URL: http://api.sportradar.us/tennis-t1/competitor/5751bac3-3661-4ae6-8257-481e032fd33b/summary.xml?api_key=hbnefvjkssda5f3xa4tctnfd
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1840)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at sports_miniWiki.GetTennisPlayerInfo.getTop10(GetTennisPlayerInfo.java:89)
+	at sports_miniWiki.GetTennisPlayerInfo.&lt;init&gt;(GetTennisPlayerInfo.java:49)
+	at sports_miniWiki.GetTennisPlayerInfoTest.setUp(GetTennisPlayerInfoTest.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</error>
+    </testcase>
+    <testcase name="testPlayerRanking" classname="sports_miniWiki.GetTennisPlayerInfoTest" time="0.526">
+      <error>java.io.IOException: Server returned HTTP response code: 403 for URL: http://api.sportradar.us/tennis-t1/competitor/5751bac3-3661-4ae6-8257-481e032fd33b/summary.xml?api_key=hbnefvjkssda5f3xa4tctnfd
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1840)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at sports_miniWiki.GetTennisPlayerInfo.getTop10(GetTennisPlayerInfo.java:89)
+	at sports_miniWiki.GetTennisPlayerInfo.&lt;init&gt;(GetTennisPlayerInfo.java:49)
+	at sports_miniWiki.GetTennisPlayerInfoTest.setUp(GetTennisPlayerInfoTest.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</error>
+    </testcase>
+    <testcase name="testPlayerName" classname="sports_miniWiki.GetTennisPlayerInfoTest" time="0.025">
+      <error>java.io.IOException: Server returned HTTP response code: 403 for URL: http://api.sportradar.us/tennis-t1/competitor/5751bac3-3661-4ae6-8257-481e032fd33b/summary.xml?api_key=hbnefvjkssda5f3xa4tctnfd
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1840)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at sports_miniWiki.GetTennisPlayerInfo.getTop10(GetTennisPlayerInfo.java:89)
+	at sports_miniWiki.GetTennisPlayerInfo.&lt;init&gt;(GetTennisPlayerInfo.java:49)
+	at sports_miniWiki.GetTennisPlayerInfoTest.setUp(GetTennisPlayerInfoTest.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</error>
+    </testcase>
+  </testsuite>
+</testrun>
