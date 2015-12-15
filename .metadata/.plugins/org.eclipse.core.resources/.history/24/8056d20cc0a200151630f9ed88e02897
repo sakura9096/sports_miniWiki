@@ -1,0 +1,36 @@
+/**
+ * 
+ */
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * This is a test class for the NBAPlayer class.
+ * @author yuezhang
+ *
+ */
+public class NBAPlayer_Test {
+
+	
+	@Before
+	public void setUp()  {
+		String player = "Aaa";
+		String position = "Bbb";
+		String number = "1";
+		int height = 100;
+		int weight = 200;
+		String experience = "1";
+		
+		NBAPlayer newPlayer = new NBAPlayer(player, position, number, height, weight, experience);
+	}
+
+	@Test
+	public void testNBAPlayer_NotNull() {
+		assertNotNull("NBAPlayer cannot be null", newPlayer);
+	}
+
+}

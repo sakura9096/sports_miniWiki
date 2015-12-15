@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="NBATeamProfile_test" project="sports_miniWiki" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="sports_miniWiki.NBATeamProfile_test" time="8.655">
+    <testcase name="testNBATeamProfile_NotNull" classname="sports_miniWiki.NBATeamProfile_test" time="8.655"/>
+  </testsuite>
+</testrun>

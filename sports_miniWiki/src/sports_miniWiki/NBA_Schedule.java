@@ -12,11 +12,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * This class calls NBA API and stores the schedule information.
+ * @author yuezhang
+ *
+ */
 public class NBA_Schedule {
 	
-	public ArrayList<NBASchedule_Individual> schedule;
-	public ArrayList<String> dates;
+	private ArrayList<NBASchedule_Individual> schedule;
+	private ArrayList<String> dates;
 	
+	/**
+	 * The constructor
+	 * @throws IOException
+	 * @throws JSONException
+	 */
 	public NBA_Schedule() throws IOException, JSONException {
 		schedule = new ArrayList<NBASchedule_Individual>();
 		dates = new ArrayList<String>();
@@ -24,6 +34,11 @@ public class NBA_Schedule {
 
 	}
 	
+	/**
+	 * The method that makes the API call.
+	 * @throws IOException
+	 * @throws JSONException
+	 */
 	private void getSchedule() throws IOException, JSONException {
 		
 		URL myUrl = new URL("http://api.sportradar.us/nba-t3/games/2015/REG/schedule.json?api_key=79jjegg7pncfakwtjkta25y2");
@@ -61,11 +76,27 @@ public class NBA_Schedule {
         		
         		String home = games.getJSONObject(i).getJSONObject("home").getString("name");
         		String away = games.getJSONObject(i).getJSONObject("away").getString("name");
-        		//System.out.println(date + " " + time + " " + away + " VS " + home);
+        		
         		NBASchedule_Individual NBAGameSchedule = new NBASchedule_Individual(date, time, away, home);
         		schedule.add(NBAGameSchedule);        		
         	}
         }
+	}
+	
+	/**
+	 * The getter for schedule.
+	 * @return the schedule
+	 */
+	public ArrayList<NBASchedule_Individual> getStoredSchedule() {
+		return schedule;
+	}
+	
+	/**
+	 * The getter for dates.
+	 * @return the dates
+	 */
+	public ArrayList<String> getStoredDate() {
+		return dates;
 	}
 
 }
