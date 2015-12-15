@@ -27,6 +27,7 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 //import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import javax.swing.JSlider;
 
 public class Sports_miniWiki {
 
@@ -75,54 +76,382 @@ public class Sports_miniWiki {
 		/*
 		 * This is the UCL page.
 		 */
-		JPanel UCL_Teams = new JPanel();
-		frame.getContentPane().add(UCL_Teams, "name_1981053046332685");
-		UCL_Teams.setLayout(null);
+		JPanel UCLLast16Draw = new JPanel();
+		frame.getContentPane().add(UCLLast16Draw, "name_2115637513029884");
+		UCLLast16Draw.setLayout(null);
 		
-		JButton btnHome_3 = new JButton("Home");
-		btnHome_3.addActionListener(new ActionListener() {
+		UCLClubAPICaller clubProfile = new UCLClubAPICaller();
+		
+		JPanel UCLTeamProfile = new JPanel();
+		frame.getContentPane().add(UCLTeamProfile, "name_2115637513029884");
+		UCLTeamProfile.setLayout(null);
+		
+		JTextArea textAreaTeamInfo = new JTextArea();
+		textAreaTeamInfo.setVisible(true);
+		textAreaTeamInfo.setEditable(false);
+		textAreaTeamInfo.setFont(new Font("Serif", Font.PLAIN, 25));
+		JScrollPane UCLPlayerInfo_scroll = new JScrollPane(textAreaTeamInfo);
+		UCLPlayerInfo_scroll.setBounds(600, 66, 600, 612);
+		UCLTeamProfile.add(UCLPlayerInfo_scroll);
+		
+		/**
+		 * FC Barcelona
+		 */
+		JLabel lblBarcelona = new JLabel("Barcelona");
+		lblBarcelona.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/Barcelona.jpg")));
+		lblBarcelona.setBounds(80, 80, 80, 80);
+		UCLTeamProfile.add(lblBarcelona);
+		
+		JLabel lblPSG = new JLabel("PSG");
+		lblPSG.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/PSG.jpg")));
+		lblPSG.setBounds(300, 80, 80, 80);
+		UCLTeamProfile.add(lblPSG);
+		
+		JLabel lblBMunich = new JLabel("BMunich");
+		lblBMunich.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/BayernMunich.jpg")));
+		lblBMunich.setBounds(80, 240, 80, 80);
+		UCLTeamProfile.add(lblBMunich);
+		
+		JLabel lblJuventus = new JLabel("Juventus");
+		lblJuventus.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/Juventus.jpg")));
+		lblJuventus.setBounds(300, 240, 80, 80);
+		UCLTeamProfile.add(lblJuventus);
+		
+		JLabel lblRealMadrid = new JLabel("RealMadrid");
+		lblRealMadrid.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/RealMadrid.jpg")));
+		lblRealMadrid.setBounds(80, 400, 80, 80);
+		UCLTeamProfile.add(lblRealMadrid);
+		
+		JLabel lblChelsea = new JLabel("Chelsea");
+		lblChelsea.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/Chelsea.jpg")));
+		lblChelsea.setBounds(300, 400, 80, 80);
+		UCLTeamProfile.add(lblChelsea);
+		
+		JLabel lblArsenal = new JLabel("Arsenal");
+		lblArsenal.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/Arsenal.jpg")));
+		lblArsenal.setBounds(80, 560, 80, 80);
+		UCLTeamProfile.add(lblArsenal);
+		
+		JLabel lblManCity = new JLabel("ManCity");
+		lblManCity.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLTeam/ManCity.jpg")));
+		lblManCity.setBounds(300, 560, 80, 80);
+		UCLTeamProfile.add(lblManCity);
+		
+		JButton btnFcBarcelona = new JButton("FC Barcelona");
+		btnFcBarcelona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UCL_Teams.setVisible(false);
-				Main_window.setVisible(true);
+				UCLClub club = clubProfile.getClubs().get("FCBarcelona");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
 			}
 		});
-		btnHome_3.setBounds(35, 6, 120, 40);
-		UCL_Teams.add(btnHome_3);
+		btnFcBarcelona.setBounds(64, 172, 117, 29);
+		UCLTeamProfile.add(btnFcBarcelona);
 		
-		JButton btnTRealmadrid = new JButton("Real Madrid");
-		btnTRealmadrid.addActionListener(new ActionListener() {
+		JButton btnParisSaintgermen = new JButton("Paris Saint-German");
+		btnParisSaintgermen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UCLClub club = clubProfile.getClubs().get("Paris Saint-German");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
 			}
 		});
-		btnTRealmadrid.setBounds(38, 183, 117, 29);
-		UCL_Teams.add(btnTRealmadrid);
+		btnParisSaintgermen.setBounds(268, 172, 150, 30);
+		UCLTeamProfile.add(btnParisSaintgermen);
 		
-		JButton btnTPSG = new JButton("Paris");
-		btnTPSG.setBounds(221, 183, 117, 29);
-		UCL_Teams.add(btnTPSG);
+		JButton btnBayernMunich = new JButton("Bayern Munich");
+		btnBayernMunich.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCLClub club = clubProfile.getClubs().get("Bayern Munich");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
+			}
+		});
+		btnBayernMunich.setBounds(64, 332, 117, 29);
+		UCLTeamProfile.add(btnBayernMunich);
 		
-		JButton btnTWolfsburg = new JButton("Wolfsburg");
-		btnTWolfsburg.setBounds(402, 183, 117, 29);
-		UCL_Teams.add(btnTWolfsburg);
+		JButton btnJuventus = new JButton("Juventus");
+		btnJuventus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCLClub club = clubProfile.getClubs().get("Juventus");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
+			}
+		});
+		btnJuventus.setBounds(288, 332, 117, 29);
+		UCLTeamProfile.add(btnJuventus);
 		
-		JButton btnTMancity = new JButton("Man City");
-		btnTMancity.setBounds(38, 395, 117, 29);
-		UCL_Teams.add(btnTMancity);
+		JButton btnRealMadrid = new JButton("Real Madrid");
+		btnRealMadrid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCLClub club = clubProfile.getClubs().get("Real Madrid");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
+			}
+		});
+		btnRealMadrid.setBounds(64, 492, 117, 29);
+		UCLTeamProfile.add(btnRealMadrid);
 		
-		JButton btnTJuventus = new JButton("Juventus");
-		btnTJuventus.setBounds(221, 395, 117, 29);
-		UCL_Teams.add(btnTJuventus);
+		JButton btnChelsea = new JButton("Chelsea");
+		btnChelsea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCLClub club = clubProfile.getClubs().get("Chelsea");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
+			}
+		});
+		btnChelsea.setBounds(288, 492, 117, 29);
+		UCLTeamProfile.add(btnChelsea);
 		
-		JLabel lblTeamProfileText = new JLabel("TEAM PROFILE");
-		lblTeamProfileText.setFont(new Font("Lucida Grande", Font.BOLD, 30));
-		lblTeamProfileText.setForeground(Color.WHITE);
-		lblTeamProfileText.setBounds(538, 370, 1280, 100);
-		UCL_Teams.add(lblTeamProfileText);
+		JButton btnArsenal = new JButton("Arsenal");
+		btnArsenal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCLClub club = clubProfile.getClubs().get("Arsenal");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
+			}
+		});
+		btnArsenal.setBounds(64, 649, 117, 29);
+		UCLTeamProfile.add(btnArsenal);
 		
-		JLabel lblUCL_trophy = new JLabel("UCL_trophy");
-		lblUCL_trophy.setBounds(0, 0, 1280, 720);
-		lblUCL_trophy.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCL_16RoundTeams.jpg")));
-		UCL_Teams.add(lblUCL_trophy);
+		JButton btnManchesterCity = new JButton("Manchester City");
+		btnManchesterCity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCLClub club = clubProfile.getClubs().get("Man City");
+				String name = club.getName();
+				String alias = club.getAlias();
+				String country = club.getTeamCountry();
+				String managerFN = club.getManagerFN();
+				String managerLN = club.getManagerLN();
+				String managerCountry = club.getManagerCountry();
+				String managerBirthdate = club.getManagerBirthDate();
+				ArrayList<UCLPlayer> playerInfo = club.getRoster();
+				
+				textAreaTeamInfo.setText("Name: " + name + " Alias: " + alias + " Country: " + country + "\n\n" + "Manager:\n" + "Name: " + managerFN + " " + managerLN + "\n" + "Country: " + managerCountry + "\n" + "Date of Birth: " + managerBirthdate + "\n\n" + "Roster:\n");
+				
+				for (UCLPlayer player : playerInfo) {
+					String firstName = player.getFirstName();
+					String lastName = player.getLastName();
+					String playerCountry = player.getCountry();
+					String dateOfBirth = player.getDateOfBirth();
+					String preferredFoot = player.getPreferredFoot();
+					String height_cm = player.getHeight_cm();
+					String weight_kg = player.getWeight_kg();
+					String jerseyNumber = player.getJerseyNumber();
+					String position = player.getPosition();
+					textAreaTeamInfo.append("Name: " + firstName + " " + lastName + "\n");
+					textAreaTeamInfo.append("Country: " + playerCountry + "\n");
+					textAreaTeamInfo.append("DOB: " + dateOfBirth + "\n");
+					textAreaTeamInfo.append("Preferred Foot: " + preferredFoot + "\n");
+					textAreaTeamInfo.append("height(cm): " + height_cm + "\n");
+					textAreaTeamInfo.append("weight(kg): " + weight_kg + "\n");
+					textAreaTeamInfo.append("Jersey Number: " + jerseyNumber + "\n");
+					textAreaTeamInfo.append("Position: " + position + "\n\n");
+				}
+			}
+		});
+		btnManchesterCity.setBounds(278, 649, 150, 29);
+		UCLTeamProfile.add(btnManchesterCity);
+		
+		/**
+		 * UEFA Champions League Main Page
+		 */
 		
 		final JPanel UCL = new JPanel();
 		frame.getContentPane().add(UCL, "name_75551392776245");
@@ -140,52 +469,76 @@ public class Sports_miniWiki {
 		UCL.add(btnHome);
 		
 		JButton btnFTeamProfile = new JButton("Team Profile");
+		btnFTeamProfile.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnFTeamProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UCL.setVisible(false);
 				Main_window.setVisible(false);
-				UCL_Teams.setVisible(true);
+				UCLTeamProfile.setVisible(true);
 			}
 		});
 		
-<<<<<<< HEAD
-		btnFTeamProfile.setBounds(162, 600, 122, 46);
+
+		btnFTeamProfile.setBounds(567, 429, 150, 70);
 		UCL.add(btnFTeamProfile);
 		
-		JButton btnFPlayerProfile = new JButton("Player Profile");
-		btnFPlayerProfile.setBounds(412, 600, 122, 46);
-		UCL.add(btnFPlayerProfile);
-		
-		JButton btnFSchedule = new JButton("Schedule");
-		btnFSchedule.setBounds(662, 600, 122, 46);
-		UCL.add(btnFSchedule);
-		
-		JButton btnFWeekHighlights = new JButton("Week Highlights");
-		btnFWeekHighlights.setBounds(912, 600, 122, 46);
-		UCL.add(btnFWeekHighlights);
+		JButton btnFDraw = new JButton("Last 16 Draw");
+		btnFDraw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCL.setVisible(false);
+				Main_window.setVisible(false);
+				UCLLast16Draw.setVisible(true);
+			}
+		});
+		btnFDraw.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnFDraw.setBounds(567, 543, 150, 70);
+		UCL.add(btnFDraw);
 		
 		JLabel lblUCL_background1 = new JLabel("UCL_background");
 		lblUCL_background1.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCL_logo.jpg")));
 		lblUCL_background1.setBounds(0, 0, 1280, 720);
 		UCL.add(lblUCL_background1);
 		UCL.setVisible(false);
-=======
-		JLabel lblFifabackground = new JLabel("FIFA_background");
-		lblFifabackground.setIcon(new ImageIcon(this.getClass().getResource("/resources/FIFA_background.jpg")));
-		lblFifabackground.setBounds(-29, 6, 1280, 720);
-		FIFA.add(lblFifabackground);
-		FIFA.setVisible(false);
->>>>>>> cf3de5c30769dbf798146e91f53abe7807137c8a
 		
+		JButton btnBack_4 = new JButton("Back");
+		btnBack_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCL.setVisible(true);
+				UCLTeamProfile.setVisible(false);
+				UCLLast16Draw.setVisible(false);
+			}
+		});
+		btnBack_4.setBounds(31, 21, 111, 29);
+		UCLTeamProfile.add(btnBack_4);
 		
+		JLabel lblStadium = new JLabel("Stadium");
+		lblStadium.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCL_Stadium.jpg")));
+		lblStadium.setBounds(0, 0, 1280, 720);
+		UCLTeamProfile.add(lblStadium);
+		
+		JButton btnBack_1 = new JButton("Back");
+		btnBack_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UCL.setVisible(true);
+				UCLLast16Draw.setVisible(false);
+				UCLTeamProfile.setVisible(false);
+			}
+		});
+		btnBack_1.setBounds(21, 42, 142, 43);
+		UCLLast16Draw.add(btnBack_1);
+		
+		JLabel lblUCLDrawResult = new JLabel("Result");
+		lblUCLDrawResult.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblUCLDrawResult.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCLLast16Draw.jpg")));
+		lblUCLDrawResult.setBounds(0, 0, 1280, 720);
+		UCLLast16Draw.add(lblUCLDrawResult);
+		
+
 		/*
 		 * This is the NBA page. It contains three sub-pages.
 		 */
-		
-<<<<<<< HEAD
-=======
+
 		// NBA panel is the main panel of this part.
->>>>>>> cf3de5c30769dbf798146e91f53abe7807137c8a
 		final JPanel NBA = new JPanel();
 		frame.getContentPane().add(NBA, "name_75555177344305");
 		NBA.setLayout(null);
@@ -536,9 +889,9 @@ public class Sports_miniWiki {
 		NBA.add(lblNewLabel_1);
 		NBA.setVisible(false);
 		
-		/**
-		 * ATP_WTA panel, created by Man Hu
-		 */
+//		/**
+//		 * ATP_WTA panel, created by Man Hu
+//		 */
 		// call Tennis API
 		GetTennisPlayerInfo tennisInfo = new GetTennisPlayerInfo();
 		TimeUnit.SECONDS.sleep(1);
@@ -1400,7 +1753,7 @@ public class Sports_miniWiki {
 		JButton btnAtpWta = new JButton("ATP & WTA");
 		btnAtpWta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ATP_WTA.setVisible(true);
+//				ATP_WTA.setVisible(true);
 				Main_window.setVisible(false);
 			}
 		});
@@ -1414,6 +1767,8 @@ public class Sports_miniWiki {
 		lblNewLabel.setBounds(0, 0, 1280, 720);
 		Main_window.add(lblNewLabel);
 		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, "name_2127323497617671");
+		
 	}
-
 }
