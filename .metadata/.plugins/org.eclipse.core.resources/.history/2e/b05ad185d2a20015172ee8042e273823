@@ -1,0 +1,18 @@
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/**
+ * @author yuezhang
+ *
+ */
+public class Sports_miniWiki_Test {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

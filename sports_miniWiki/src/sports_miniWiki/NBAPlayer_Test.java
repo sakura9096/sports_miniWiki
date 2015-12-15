@@ -32,5 +32,12 @@ public class NBAPlayer_Test {
 	public void testNBAPlayer_NotNull() {
 		assertNotNull("NBAPlayer cannot be null", newPlayer);
 	}
+	
+	@Test
+	public void testNBAPlayer_toString() {
+		String output = newPlayer.toString();
+		String expected = "1 -- Aaa: Bbb  height: 100  weight: 200  experience: 1years\n";
+		assertEquals("The toString result should be equal to the expected results", output, expected);
+	}
 
 }

@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-[[{"location":"/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home","type":"JRE","hints":{"EXECUTION_ENVIRONMENT":"JavaSE-1.8"}},"jre:jre:1.8.0"]]
-=======
-[[{"location":"/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home","type":"JRE","hints":{"EXECUTION_ENVIRONMENT":"JavaSE-1.8"}},"jre:jre:1.8.0"],[{"location":"/Users/yuezhang/Documents/sports_miniWiki/sports_miniWiki","type":"PROJECT","hints":{"PROJECT_NAME":"sports_miniWiki"}},"ABSENT"]]
->>>>>>> upstream/master
-=======
-[[{"location":"/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home","type":"JRE","hints":{"EXECUTION_ENVIRONMENT":"JavaSE-1.8"}},"jre:jre:1.8.0"]]
->>>>>>> upstream/master
+{}

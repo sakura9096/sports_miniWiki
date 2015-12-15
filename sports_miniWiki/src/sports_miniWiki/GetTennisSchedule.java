@@ -68,7 +68,7 @@ public class GetTennisSchedule {
 		
 		HashMap<String, ArrayList<TennisLeagueSchedule>> schedule = new HashMap<String, ArrayList<TennisLeagueSchedule>> ();
 		
-		String link = "http://api.sportradar.us/tennis-t1/:season/" + id + "/schedule.xml?api_key=hbnefvjkssda5f3xa4tctnfd";
+		String link = "http://api.sportradar.us/tennis-t1/:season/" + id + "/schedule.xml?api_key=dkkz6m4y76spfj2c99vh5dvm";
 		
 		URL url = new URL(link);
 		URLConnection connection = url.openConnection();

@@ -477,8 +477,6 @@ public class Sports_miniWiki {
 				UCLTeamProfile.setVisible(true);
 			}
 		});
-		
-
 		btnFTeamProfile.setBounds(567, 429, 150, 70);
 		UCL.add(btnFTeamProfile);
 		
@@ -498,8 +496,7 @@ public class Sports_miniWiki {
 		lblUCL_background1.setIcon(new ImageIcon(Sports_miniWiki.class.getResource("/resources/UCL_logo.jpg")));
 		lblUCL_background1.setBounds(0, 0, 1280, 720);
 		UCL.add(lblUCL_background1);
-		UCL.setVisible(false);
-		
+	
 		JButton btnBack_4 = new JButton("Back");
 		btnBack_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

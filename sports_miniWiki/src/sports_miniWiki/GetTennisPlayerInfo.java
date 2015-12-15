@@ -77,7 +77,7 @@ public class GetTennisPlayerInfo {
 		ArrayList<TennisPlayer> player = new ArrayList<TennisPlayer> ();
 		
 		for(String element: id) {
-			String link = "http://api.sportradar.us/tennis-t1/competitor/" + element + "/summary.xml?api_key=hbnefvjkssda5f3xa4tctnfd";
+			String link = "http://api.sportradar.us/tennis-t1/competitor/" + element + "/summary.xml?api_key=dkkz6m4y76spfj2c99vh5dvm";
 			String name = "unknown";
 			String ranking = "0";
 			String ranking_points = "0";
