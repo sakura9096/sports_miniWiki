@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GetTennisScheduleTest" project="sports_miniWiki" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="sports_miniWiki.GetTennisScheduleTest" time="12.908">
+    <testcase name="testScheduleNotNull" classname="sports_miniWiki.GetTennisScheduleTest" time="2.352"/>
+    <testcase name="testTournamentAttributes" classname="sports_miniWiki.GetTennisScheduleTest" time="2.149"/>
+    <testcase name="testTournamentName" classname="sports_miniWiki.GetTennisScheduleTest" time="2.104"/>
+    <testcase name="testTournamentTime" classname="sports_miniWiki.GetTennisScheduleTest" time="2.098"/>
+    <testcase name="testWTAScheduleMonthNumber" classname="sports_miniWiki.GetTennisScheduleTest" time="2.107"/>
+    <testcase name="testATPScheduleMonthNumber" classname="sports_miniWiki.GetTennisScheduleTest" time="2.098"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,14 @@
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class GetTennisScheduleTest {
+
+	@Test
+	public void testGetTennisSchedule() {
+		fail("Not yet implemented");
+	}
+
+}

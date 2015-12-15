@@ -1,0 +1,35 @@
+package sports_miniWiki;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class GetTennisScheduleTest {
+
+	private GetTennisSchedule schedule;
+	
+	@Before
+	public void setUp() throws Exception {
+		schedule = new GetTennisSchedule();
+	}
+	
+	@Test
+	public void testScheduleNotNull() {
+		assertNotNull("Schedule cannot be null", schedule);
+	}
+	
+	@Test
+	public void testATPScheduleMonthNumber() {
+		int numberOfMonth = schedule.getATPschedule().size();
+		assertEquals("ATP's schedule shoud be from January to November", 11, numberOfMonth);
+	}
+	
+	@Test
+	public void testWTAScheduleMonthNumber() {
+		int numberOfMonth = schedule.getWTAschedule().size();
+		assertEquals("WTA's schedule shoud be from January to November", 11, numberOfMonth);
+	}
+	
+
+}
