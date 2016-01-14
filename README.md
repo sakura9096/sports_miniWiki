@@ -3,19 +3,11 @@ Sports_miniWiki
 
 DESCRIPTION
 
-This project serves as a miniWiki for three popular sports, including soccer(UCL), basketball(NBA) and tennis(ATP&WTA). Users can use a GUI interface to choose to know teams or players they are interested in. 8 NBA teams, 20 ATP&WAT players, 4 soccer teams as well as 2015 match information are included in our project. The information is got by calling SportradarUS API. 
-
-WORK BREAKDOWN
-
-NBA Panel: Yue Zhang
-
-UCL Panel: Liangjin Zhao
-
-ATP&WTA Panel: Man Hu
+This is a Java GUI application using Swing components. The application serves as a "miniWiki" for three popular sports leagues, including UCL(soccer), NBA(basketball) and ATP&WTA(tennis). It displays the real-time statistics and schedules for those sports leagues in the application window upon request. User can click through the application viewing their favorite sports teams and players, or checking the current schedule of the games. The data are retrieved using trial APIs.
 
 
-Github repo: https://github.com/cit-upenn/hw5-project-sports-miniwiki.git
+Github repo: https://github.com/sakura9096/sports_miniWiki
 
 Notes:
 
-As the API used in this project is for trial, only one call is permitted each second and total amount of calls is limited to 200. Please be patient while starting our program, it may take about 1~2 min to call the API and retrieve back all the data needed. Also, each time running the program will use ~20 calls. Please do not run our little program frequently, otherwise we have to pay for it. Thank you very much!
+As the APIs used in this project are for trial, they are limited in the frequency and total times of calling permitted. 
